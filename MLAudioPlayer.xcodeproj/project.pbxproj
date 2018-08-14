@@ -33,6 +33,22 @@
 		35B742371F82A61E00829B21 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742351F82A61E00829B21 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35B742381F82A62900829B21 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742341F82A61D00829B21 /* Nimble.framework */; };
 		35B742391F82A62900829B21 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742351F82A61E00829B21 /* Quick.framework */; };
+		D0AC043121231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */; };
+		D0AC043221231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */; };
+		D0AC043421231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */; };
+		D0AC043521231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */; };
+		D0AC043721231C36002584B2 /* MLPlayerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */; };
+		D0AC043821231C36002584B2 /* MLPlayerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */; };
+		D0AC043A21231C55002584B2 /* MLTrackPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */; };
+		D0AC043B21231C55002584B2 /* MLTrackPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */; };
+		D0AC043D21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */; };
+		D0AC043E21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */; };
+		D0AC044321231CAD002584B2 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044221231CAC002584B2 /* UIColor+Hex.swift */; };
+		D0AC044421231CAD002584B2 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044221231CAC002584B2 /* UIColor+Hex.swift */; };
+		D0AC044B21231E88002584B2 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044A21231E88002584B2 /* ViewConfiguration.swift */; };
+		D0AC044C21231E88002584B2 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044A21231E88002584B2 /* ViewConfiguration.swift */; };
+		D0AC044E21231F28002584B2 /* MLGlobalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */; };
+		D0AC044F21231F28002584B2 /* MLGlobalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +135,14 @@
 		35B7422E1F82A5E000829B21 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		35B742341F82A61D00829B21 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		35B742351F82A61E00829B21 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
+		D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAudioPlayerProtocol.swift; sourceTree = "<group>"; };
+		D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAudioPlayerManager.swift; sourceTree = "<group>"; };
+		D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPlayerButtonView.swift; sourceTree = "<group>"; };
+		D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLTrackPlayerView.swift; sourceTree = "<group>"; };
+		D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLLabelTimerPlayerView.swift; sourceTree = "<group>"; };
+		D0AC044221231CAC002584B2 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		D0AC044A21231E88002584B2 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
+		D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLGlobalAnimations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +285,14 @@
 			isa = PBXGroup;
 			children = (
 				359649021FB18CBF00FC7ADC /* MLAudioPlayer.swift */,
+				D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */,
+				D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */,
+				D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */,
+				D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */,
+				D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */,
+				D0AC044221231CAC002584B2 /* UIColor+Hex.swift */,
+				D0AC044A21231E88002584B2 /* ViewConfiguration.swift */,
+				D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -559,6 +591,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0AC043121231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */,
+				D0AC044E21231F28002584B2 /* MLGlobalAnimations.swift in Sources */,
+				D0AC044321231CAD002584B2 /* UIColor+Hex.swift in Sources */,
+				D0AC043721231C36002584B2 /* MLPlayerButtonView.swift in Sources */,
+				D0AC043D21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */,
+				D0AC043421231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */,
+				D0AC044B21231E88002584B2 /* ViewConfiguration.swift in Sources */,
+				D0AC043A21231C55002584B2 /* MLTrackPlayerView.swift in Sources */,
 				359649031FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +623,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0AC043221231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */,
+				D0AC044F21231F28002584B2 /* MLGlobalAnimations.swift in Sources */,
+				D0AC044421231CAD002584B2 /* UIColor+Hex.swift in Sources */,
+				D0AC043821231C36002584B2 /* MLPlayerButtonView.swift in Sources */,
+				D0AC043E21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */,
+				D0AC043521231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */,
+				D0AC044C21231E88002584B2 /* ViewConfiguration.swift in Sources */,
+				D0AC043B21231C55002584B2 /* MLTrackPlayerView.swift in Sources */,
 				359649051FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -764,6 +812,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.micheltlutz.MLAudioPlayer.MLAudioPlayer;
 				PRODUCT_NAME = MLAudioPlayer;
@@ -783,6 +832,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.micheltlutz.MLAudioPlayer.MLAudioPlayer;
 				PRODUCT_NAME = MLAudioPlayer;

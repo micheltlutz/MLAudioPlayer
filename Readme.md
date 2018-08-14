@@ -19,7 +19,7 @@ AudioPlayer for Swift projects
 
 ## Requirements
 
-- iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- iOS 10.0+ / tvOS 9.0+ 
 - Xcode 9.0+
 
 ## Installation
@@ -38,7 +38,7 @@ To integrate MLAudioPlayer into your Xcode project using CocoaPods, specify it i
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 
 pod 'MLAudioPlayer', '~> 0.0.1'
@@ -147,6 +147,31 @@ $ git submodule update --init --recursive
 </p></details>
 
 ## Usage
+
+### You need two image files with named in your Assets 
+
+- questionUnchecked
+- questionChecked
+
+```swift
+
+import MLQuestionCheck
+
+let question1 = MLQuestionCheck(question: "You are ok?")
+question1.didChangeState = { checked in
+print("question1 checked? \(checked)")
+}
+
+```
+
+### You can Change the image name 
+```swift
+
+question1.uncheckedImageName = "new image name"
+question1.checkedImageName = "new image name"
+question1.setupCheck() // to change configuration buttons
+
+```
 
 ## Contributing
 

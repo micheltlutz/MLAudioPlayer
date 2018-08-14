@@ -20,7 +20,7 @@ let package = Package(
     targets: [
         .target(
             name: "MLAudioPlayer",
-            dependencies: [],
+            dependencies: ["UIKit", "AVFoundation"],
             path: "Sources"),
         .testTarget(
             name: "MLAudioPlayerTests",
