@@ -30,7 +30,7 @@ protocol MLAudioPlayerManagerDelegate: class {
     func didError(error: Error)
 }
 
-internal class MLAudioPlayerManager: NSObject{
+class MLAudioPlayerManager: NSObject{
     private var urlAudio: String!
     private var timer: Timer!
     private var audioPlayer: AVAudioPlayer!
@@ -62,7 +62,11 @@ internal class MLAudioPlayerManager: NSObject{
         let operationQueue = OperationQueue()
         let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
         guard let url = URL(string: self.urlAudio) else { return }
-        let downloadTask = urlSession.downloadTask(with: url)
+        let downloadTask = urlSession.downloadTask(with: url) { (url, response, error) in
+            if let error = error {
+                self.delegate?.didError(error: error)
+            }
+        }
         downloadTask.resume()
     }
     open func play() {

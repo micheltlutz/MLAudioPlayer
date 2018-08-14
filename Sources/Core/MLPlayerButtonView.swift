@@ -24,50 +24,55 @@ import UIKit
 
 class MLPlayerButtonView: UIView {
     var state: MLPlayerState = .idle
-    
-    private let button: UIButton = {
+    var type: MLPlayerType = .full
+    internal let button: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "play"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private let loadingView: UIImageView = {
+    internal let loadingView: UIImageView = {
         let loadingView = UIImageView(image: UIImage(named: "playerLoad"))
         loadingView.isHidden = true
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         return loadingView
     }()
     
-    private let loadingLabel: UILabel = {
-        let loadingLabel = UILabel(frame: .zero)
-        loadingLabel.text = "carregando"
-        loadingLabel.textAlignment = .center
-        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+    internal let loadingLabel: MLLabel = {
+        let loadingLabel = MLLabel()
+        loadingLabel.text = "loading"
         return loadingLabel
     }()
     
     var didPlay: (() -> Void)!
     var didPause: (() -> Void)!
     
-    private var width: CGFloat = 128
-    private var height: CGFloat = 128
+    internal var width: CGFloat = 128
+    internal var height: CGFloat = 128
+    private var loadAnimating = true
+    private var showLoadLabel = true
+//    init() {
+//        super.init(frame: .zero)
+//        button.addTarget(self, action: #selector(toogleState), for: .touchUpInside)
+//        setupViewConfiguration()
+//        startAnimate()
+//    }
     
-    init() {
-        super.init(frame: .zero)
-        button.addTarget(self, action: #selector(toogleState), for: .touchUpInside)
-        setupViewConfiguration()
-        startAnimate()
-    }
-    
-    init(width: CGFloat, height: CGFloat) {
+    init(width: CGFloat? = 128 , height: CGFloat? = 128, type: MLPlayerType? = .full, loadAnimating: Bool? = true, showLoadLabel: Bool? = true) {
         super.init(frame: .zero)
         self.button.addTarget(self, action: #selector(toogleState), for: .touchUpInside)
-        self.width = width
-        self.height = height
-        self.setupViewConfiguration()
+        self.width = width!
+        self.height = height!
+        self.type = type!
+        self.loadAnimating = loadAnimating!
+        self.showLoadLabel = showLoadLabel!
+        if type == .full {
+            self.setupViewConfiguration()
+        }
         self.startAnimate()
     }
+    
     
     @objc func toogleState() {
         switch state {
@@ -93,27 +98,49 @@ class MLPlayerButtonView: UIView {
     }
     
     func stopAnimate() {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 1.0, animations: {
-                self.loadingLabel.alpha = 0.0
-                self.loadingView.alpha = 0.0
-            }) { (success) in
-                if success {
-                    self.state = .loaded
-                    self.loadingLabel.isHidden = true
-                    self.loadingView.isHidden = true
-                    self.isUserInteractionEnabled = true
-                    self.loadingView.layer.removeAllAnimations()
+        if loadAnimating {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 1.0, animations: {
+                    if self.showLoadLabel {
+                        self.loadingLabel.alpha = 0.0
+                    }
+                    self.loadingView.alpha = 0.0
+                }) { (success) in
+                    if success {
+                        self.readyToInteract()
+                        self.loadingView.layer.removeAllAnimations()
+                    }
                 }
             }
+        } else {
+            readyToInteract()
         }
+    }
+    private func readyToInteract() {
+        self.state = .loaded
+        self.loadingLabel.isHidden = true
+        self.loadingView.isHidden = true
+        self.isUserInteractionEnabled = true
     }
     
     func startAnimate() {
         state = .loading
         let aCircleTime = 2.0
         loadingView.isHidden = false
-        loadingView.layer.add(MLGlobalAnimations.infiniteRotate(duration: aCircleTime), forKey: nil)
+        if !showLoadLabel {
+            loadingLabel.isHidden = true
+        }
+        
+        if loadAnimating {
+            loadingView.layer.add(MLGlobalAnimations.infiniteRotate(duration: aCircleTime), forKey: nil)
+        }
+    }
+    func blockAnimate() {
+        if loadAnimating {
+            DispatchQueue.main.async {
+                self.loadingView.layer.removeAllAnimations()
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
