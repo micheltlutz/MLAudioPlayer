@@ -1,5 +1,9 @@
 # MLAudioPlayer
 
+<p align="center">
+ <img width="300" height="300"src="http://micheltlutz.me/imagens/projetos/MLAudioPlayer/MLAUDIOPLAYER.png">
+ </p>
+
 [![Platforms](https://img.shields.io/cocoapods/p/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 [![License](https://img.shields.io/cocoapods/l/MLAudioPlayer.svg)](https://raw.githubusercontent.com/micheltlutz/MLAudioPlayer/master/LICENSE)
 
@@ -19,7 +23,7 @@ AudioPlayer for Swift projects
 
 ## Requirements
 
-- iOS 10.0+ / tvOS 9.0+ 
+- iOS 10.0+
 - Xcode 9.0+
 
 ## Installation
@@ -150,26 +154,36 @@ $ git submodule update --init --recursive
 
 ### You need two image files with named in your Assets 
 
-- questionUnchecked
-- questionChecked
+- play
+- pause
+- refresh
+- playerLoad
+- thumbTracking
+
 
 ```swift
 
-import MLQuestionCheck
+import MLAudioPlayer
 
-let question1 = MLQuestionCheck(question: "You are ok?")
-question1.didChangeState = { checked in
-print("question1 checked? \(checked)")
-}
+var mlAudioPlayer: MLAudioPlayer = {
+    let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3")
+    return mlAudioPlayer
+}()
+
+var mlAudioPlayerMini: MLAudioPlayer = {
+    var config = MLPlayerConfig()
+    config.loadingText = "carregando"
+    config.playerType = .mini
+
+    let mlAudioPlayerMini = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3", config: config))
+    return mlAudioPlayerMini
+}()
 
 ```
 
-### You can Change the image name 
+### You can Change the images names
 ```swift
 
-question1.uncheckedImageName = "new image name"
-question1.checkedImageName = "new image name"
-question1.setupCheck() // to change configuration buttons
 
 ```
 

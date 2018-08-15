@@ -11,44 +11,22 @@
 		3549BB511DA38A2000C63030 /* MLAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* MLAudioPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3549BB521DA38A2100C63030 /* MLAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* MLAudioPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3549BB531DA38A2200C63030 /* MLAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* MLAudioPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3549BB661DA38ADB00C63030 /* MLAudioPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* MLAudioPlayer.framework */; };
-		3549BB751DA38AEF00C63030 /* MLAudioPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB481DA389F300C63030 /* MLAudioPlayer.framework */; };
-		3549BB841DA38B0000C63030 /* MLAudioPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB3B1DA389E800C63030 /* MLAudioPlayer.framework */; };
 		3549BB8B1DA38C0A00C63030 /* MLAudioPlayerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549BB8A1DA38C0A00C63030 /* MLAudioPlayerSpec.swift */; };
-		3549BB8C1DA38C0A00C63030 /* MLAudioPlayerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549BB8A1DA38C0A00C63030 /* MLAudioPlayerSpec.swift */; };
-		3549BB8D1DA38C0A00C63030 /* MLAudioPlayerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549BB8A1DA38C0A00C63030 /* MLAudioPlayerSpec.swift */; };
-		354AD5861F8A659800B18FAE /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354AD5841F8A659800B18FAE /* Quick.framework */; };
-		354AD5871F8A659800B18FAE /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354AD5851F8A659800B18FAE /* Nimble.framework */; };
-		354AD5881F8A65B500B18FAE /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354AD5851F8A659800B18FAE /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		354AD5891F8A65B500B18FAE /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354AD5841F8A659800B18FAE /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		359649031FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359649021FB18CBF00FC7ADC /* MLAudioPlayer.swift */; };
-		359649041FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359649021FB18CBF00FC7ADC /* MLAudioPlayer.swift */; };
-		359649051FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359649021FB18CBF00FC7ADC /* MLAudioPlayer.swift */; };
-		359649061FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359649021FB18CBF00FC7ADC /* MLAudioPlayer.swift */; };
 		35B7422F1F82A5E000829B21 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B7422D1F82A5DF00829B21 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35B742301F82A5E000829B21 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B7422E1F82A5E000829B21 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35B742311F82A5EC00829B21 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B7422D1F82A5DF00829B21 /* Nimble.framework */; };
 		35B742321F82A5EC00829B21 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B7422E1F82A5E000829B21 /* Quick.framework */; };
-		35B742361F82A61E00829B21 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742341F82A61D00829B21 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35B742371F82A61E00829B21 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742351F82A61E00829B21 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35B742381F82A62900829B21 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742341F82A61D00829B21 /* Nimble.framework */; };
-		35B742391F82A62900829B21 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B742351F82A61E00829B21 /* Quick.framework */; };
 		D0AC043121231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */; };
-		D0AC043221231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */; };
 		D0AC043421231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */; };
-		D0AC043521231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */; };
 		D0AC043721231C36002584B2 /* MLPlayerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */; };
-		D0AC043821231C36002584B2 /* MLPlayerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */; };
 		D0AC043A21231C55002584B2 /* MLTrackPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */; };
-		D0AC043B21231C55002584B2 /* MLTrackPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */; };
-		D0AC043D21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */; };
-		D0AC043E21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */; };
+		D0AC043D21231C78002584B2 /* MLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC043C21231C78002584B2 /* MLLabel.swift */; };
 		D0AC044321231CAD002584B2 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044221231CAC002584B2 /* UIColor+Hex.swift */; };
-		D0AC044421231CAD002584B2 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044221231CAC002584B2 /* UIColor+Hex.swift */; };
 		D0AC044B21231E88002584B2 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044A21231E88002584B2 /* ViewConfiguration.swift */; };
-		D0AC044C21231E88002584B2 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044A21231E88002584B2 /* ViewConfiguration.swift */; };
 		D0AC044E21231F28002584B2 /* MLGlobalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */; };
-		D0AC044F21231F28002584B2 /* MLGlobalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */; };
+		D0AC04562123635D002584B2 /* MLRetryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC04552123635D002584B2 /* MLRetryButton.swift */; };
+		D0AC045A2124A35F002584B2 /* MLPlayerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +72,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				35B742361F82A61E00829B21 /* Nimble.framework in Embed Frameworks */,
-				35B742371F82A61E00829B21 /* Quick.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,8 +82,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				354AD5881F8A65B500B18FAE /* Nimble.framework in Embed Frameworks */,
-				354AD5891F8A65B500B18FAE /* Quick.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,28 +95,24 @@
 		3549BB2E1DA389DB00C63030 /* MLAudioPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MLAudioPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549BB3B1DA389E800C63030 /* MLAudioPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MLAudioPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549BB481DA389F300C63030 /* MLAudioPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MLAudioPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3549BB551DA38A5E00C63030 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		3549BB571DA38A8800C63030 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		3549BB581DA38A8800C63030 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3549BB611DA38ADB00C63030 /* MLAudioPlayerTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MLAudioPlayerTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549BB701DA38AEF00C63030 /* MLAudioPlayerTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MLAudioPlayerTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549BB7F1DA38B0000C63030 /* MLAudioPlayerTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MLAudioPlayerTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549BB8A1DA38C0A00C63030 /* MLAudioPlayerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAudioPlayerSpec.swift; sourceTree = "<group>"; };
-		354AD5841F8A659800B18FAE /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/tvOS/Quick.framework; sourceTree = "<group>"; };
-		354AD5851F8A659800B18FAE /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/tvOS/Nimble.framework; sourceTree = "<group>"; };
 		359649021FB18CBF00FC7ADC /* MLAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAudioPlayer.swift; sourceTree = "<group>"; };
 		35B7422D1F82A5DF00829B21 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		35B7422E1F82A5E000829B21 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		35B742341F82A61D00829B21 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
-		35B742351F82A61E00829B21 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
 		D0AC043021231A21002584B2 /* MLAudioPlayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAudioPlayerProtocol.swift; sourceTree = "<group>"; };
 		D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAudioPlayerManager.swift; sourceTree = "<group>"; };
 		D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPlayerButtonView.swift; sourceTree = "<group>"; };
 		D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLTrackPlayerView.swift; sourceTree = "<group>"; };
-		D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLLabelTimerPlayerView.swift; sourceTree = "<group>"; };
+		D0AC043C21231C78002584B2 /* MLLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLLabel.swift; sourceTree = "<group>"; };
 		D0AC044221231CAC002584B2 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		D0AC044A21231E88002584B2 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLGlobalAnimations.swift; sourceTree = "<group>"; };
+		D0AC04552123635D002584B2 /* MLRetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLRetryButton.swift; sourceTree = "<group>"; };
+		D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPlayerConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +150,6 @@
 			files = (
 				35B742311F82A5EC00829B21 /* Nimble.framework in Frameworks */,
 				35B742321F82A5EC00829B21 /* Quick.framework in Frameworks */,
-				3549BB661DA38ADB00C63030 /* MLAudioPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,9 +157,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				354AD5861F8A659800B18FAE /* Quick.framework in Frameworks */,
-				354AD5871F8A659800B18FAE /* Nimble.framework in Frameworks */,
-				3549BB751DA38AEF00C63030 /* MLAudioPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,9 +164,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B742381F82A62900829B21 /* Nimble.framework in Frameworks */,
-				35B742391F82A62900829B21 /* Quick.framework in Frameworks */,
-				3549BB841DA38B0000C63030 /* MLAudioPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +217,6 @@
 			children = (
 				3549BB181DA3890B00C63030 /* MLAudioPlayer.h */,
 				3549BB171DA3890B00C63030 /* Info.plist */,
-				3549BB551DA38A5E00C63030 /* Info-tvOS.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -263,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				3549BB581DA38A8800C63030 /* Info.plist */,
-				3549BB571DA38A8800C63030 /* Info-tvOS.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -271,12 +232,8 @@
 		357D954B1DA3F2B400AEC55F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				35B742341F82A61D00829B21 /* Nimble.framework */,
-				35B742351F82A61E00829B21 /* Quick.framework */,
 				35B7422D1F82A5DF00829B21 /* Nimble.framework */,
 				35B7422E1F82A5E000829B21 /* Quick.framework */,
-				354AD5851F8A659800B18FAE /* Nimble.framework */,
-				354AD5841F8A659800B18FAE /* Quick.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -289,10 +246,12 @@
 				D0AC043321231A4C002584B2 /* MLAudioPlayerManager.swift */,
 				D0AC043621231C36002584B2 /* MLPlayerButtonView.swift */,
 				D0AC043921231C55002584B2 /* MLTrackPlayerView.swift */,
-				D0AC043C21231C78002584B2 /* MLLabelTimerPlayerView.swift */,
+				D0AC043C21231C78002584B2 /* MLLabel.swift */,
 				D0AC044221231CAC002584B2 /* UIColor+Hex.swift */,
 				D0AC044A21231E88002584B2 /* ViewConfiguration.swift */,
 				D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */,
+				D0AC04552123635D002584B2 /* MLRetryButton.swift */,
+				D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -595,9 +554,11 @@
 				D0AC044E21231F28002584B2 /* MLGlobalAnimations.swift in Sources */,
 				D0AC044321231CAD002584B2 /* UIColor+Hex.swift in Sources */,
 				D0AC043721231C36002584B2 /* MLPlayerButtonView.swift in Sources */,
-				D0AC043D21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */,
+				D0AC043D21231C78002584B2 /* MLLabel.swift in Sources */,
+				D0AC045A2124A35F002584B2 /* MLPlayerConfig.swift in Sources */,
 				D0AC043421231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */,
 				D0AC044B21231E88002584B2 /* ViewConfiguration.swift in Sources */,
+				D0AC04562123635D002584B2 /* MLRetryButton.swift in Sources */,
 				D0AC043A21231C55002584B2 /* MLTrackPlayerView.swift in Sources */,
 				359649031FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */,
 			);
@@ -607,7 +568,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359649061FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,7 +575,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359649041FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,15 +582,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0AC043221231A21002584B2 /* MLAudioPlayerProtocol.swift in Sources */,
-				D0AC044F21231F28002584B2 /* MLGlobalAnimations.swift in Sources */,
-				D0AC044421231CAD002584B2 /* UIColor+Hex.swift in Sources */,
-				D0AC043821231C36002584B2 /* MLPlayerButtonView.swift in Sources */,
-				D0AC043E21231C78002584B2 /* MLLabelTimerPlayerView.swift in Sources */,
-				D0AC043521231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */,
-				D0AC044C21231E88002584B2 /* ViewConfiguration.swift in Sources */,
-				D0AC043B21231C55002584B2 /* MLTrackPlayerView.swift in Sources */,
-				359649051FB18CC000FC7ADC /* MLAudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +597,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3549BB8D1DA38C0A00C63030 /* MLAudioPlayerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +604,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3549BB8C1DA38C0A00C63030 /* MLAudioPlayerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -787,7 +735,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -1007,7 +955,6 @@
 		3549BB791DA38AEF00C63030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1026,7 +973,6 @@
 		3549BB7A1DA38AEF00C63030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1044,7 +990,6 @@
 		3549BB881DA38B0000C63030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1064,7 +1009,6 @@
 		3549BB891DA38B0000C63030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

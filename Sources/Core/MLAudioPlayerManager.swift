@@ -24,13 +24,14 @@ import AVFoundation
 
 protocol MLAudioPlayerManagerDelegate: class {
     func didUpdateTimer(currentTime: Double, totalDuration: Double)
+    func didUpdateProgress(percentage: Int)
     func readyToPlay(currentTime: Double, totalDuration: Double)
     func didPause()
     func didPlay()
     func didError(error: Error)
 }
 
-internal class MLAudioPlayerManager: NSObject{
+class MLAudioPlayerManager: NSObject{
     private var urlAudio: String!
     private var timer: Timer!
     private var audioPlayer: AVAudioPlayer!
@@ -75,6 +76,9 @@ internal class MLAudioPlayerManager: NSObject{
         timer.invalidate()
         delegate?.didPause()
     }
+    open func tryAgain() {
+        self.beginDownloadingFile()
+    }
     open func trackNavigation(to value: Float){
         audioPlayer.currentTime = Double(value)
     }
@@ -90,11 +94,21 @@ extension MLAudioPlayerManager: URLSessionDownloadDelegate {
         let percentage = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
         DispatchQueue.main.sync {
             self.percentageDownload = Int(percentage * 100)
+            self.delegate?.didUpdateProgress(percentage: self.percentageDownload)
         }
-        print(percentage)
     }
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         isDownloading = false
         preparePlayer(url: location)
+    }
+    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
+        if let error = error {
+            self.delegate?.didError(error: error)
+        }
+    }
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error = error {
+            self.delegate?.didError(error: error)
+        }
     }
 }
