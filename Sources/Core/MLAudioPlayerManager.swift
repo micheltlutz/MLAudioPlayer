@@ -24,6 +24,7 @@ import AVFoundation
 
 protocol MLAudioPlayerManagerDelegate: class {
     func didUpdateTimer(currentTime: Double, totalDuration: Double)
+    func didUpdateProgress(percentage: Int)
     func readyToPlay(currentTime: Double, totalDuration: Double)
     func didPause()
     func didPlay()
@@ -62,11 +63,7 @@ class MLAudioPlayerManager: NSObject{
         let operationQueue = OperationQueue()
         let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
         guard let url = URL(string: self.urlAudio) else { return }
-        let downloadTask = urlSession.downloadTask(with: url) { (url, response, error) in
-            if let error = error {
-                self.delegate?.didError(error: error)
-            }
-        }
+        let downloadTask = urlSession.downloadTask(with: url)
         downloadTask.resume()
     }
     open func play() {
@@ -78,6 +75,9 @@ class MLAudioPlayerManager: NSObject{
         audioPlayer.pause()
         timer.invalidate()
         delegate?.didPause()
+    }
+    open func tryAgain() {
+        self.beginDownloadingFile()
     }
     open func trackNavigation(to value: Float){
         audioPlayer.currentTime = Double(value)
@@ -94,11 +94,21 @@ extension MLAudioPlayerManager: URLSessionDownloadDelegate {
         let percentage = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
         DispatchQueue.main.sync {
             self.percentageDownload = Int(percentage * 100)
+            self.delegate?.didUpdateProgress(percentage: self.percentageDownload)
         }
-        print(percentage)
     }
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         isDownloading = false
         preparePlayer(url: location)
+    }
+    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
+        if let error = error {
+            self.delegate?.didError(error: error)
+        }
+    }
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error = error {
+            self.delegate?.didError(error: error)
+        }
     }
 }

@@ -23,11 +23,15 @@
 import UIKit
 
 class MLLabel: UILabel {
+    var heightLayoutConstraint: NSLayoutConstraint?
     init() {
         super.init(frame: .zero)
         text = ""
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 17).isActive = true
+        heightLayoutConstraint = heightAnchor.constraint(equalToConstant: 17)
+        heightLayoutConstraint?.isActive = true
+        lineBreakMode = .byWordWrapping
+        numberOfLines = 0
         textAlignment = .center
     }
     

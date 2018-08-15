@@ -21,6 +21,16 @@
 ////SOFTWARE.
 
 import UIKit
+class MLPlayerButtonConfig {
+    var playButtonImageName: String? = "play"
+    var pauseButtonImageName: String? = "pause"
+    var loadingImageName: String = "playerLoad"
+    var width: CGFloat? = 128
+    var height: CGFloat? = 128
+    var playerType: MLPlayerType? = .full
+    var loadAnimating: Bool? = true
+    var showLoadLabel: Bool? = true
+}
 
 class MLPlayerButtonView: UIView {
     var state: MLPlayerState = .idle
@@ -48,31 +58,19 @@ class MLPlayerButtonView: UIView {
     var didPlay: (() -> Void)!
     var didPause: (() -> Void)!
     
-    internal var width: CGFloat = 128
-    internal var height: CGFloat = 128
-    private var loadAnimating = true
-    private var showLoadLabel = true
-//    init() {
-//        super.init(frame: .zero)
-//        button.addTarget(self, action: #selector(toogleState), for: .touchUpInside)
-//        setupViewConfiguration()
-//        startAnimate()
-//    }
-    
-    init(width: CGFloat? = 128 , height: CGFloat? = 128, type: MLPlayerType? = .full, loadAnimating: Bool? = true, showLoadLabel: Bool? = true) {
+    var config = MLPlayerButtonConfig()
+    init(config: MLPlayerButtonConfig?) {
+    //init(width: CGFloat? = 128 , height: CGFloat? = 128, type: MLPlayerType? = .full, loadAnimating: Bool? = true, showLoadLabel: Bool? = true) {
         super.init(frame: .zero)
+        if let config = config {
+            self.config = config
+        }
         self.button.addTarget(self, action: #selector(toogleState), for: .touchUpInside)
-        self.width = width!
-        self.height = height!
-        self.type = type!
-        self.loadAnimating = loadAnimating!
-        self.showLoadLabel = showLoadLabel!
-        if type == .full {
+        if self.config.playerType == .full {
             self.setupViewConfiguration()
         }
         self.startAnimate()
     }
-    
     
     @objc func toogleState() {
         switch state {
@@ -89,19 +87,19 @@ class MLPlayerButtonView: UIView {
     
     @objc func play() {
         state = .playing
-        button.setImage(UIImage(named: "pause"), for: .normal)
+        button.setImage(UIImage(named: config.pauseButtonImageName!), for: .normal)
     }
     
     @objc func pause() {
         state = .paused
-        button.setImage(UIImage(named: "play"), for: .normal)
+        button.setImage(UIImage(named: config.playButtonImageName!), for: .normal)
     }
     
     func stopAnimate() {
-        if loadAnimating {
+        if self.config.loadAnimating! {
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 1.0, animations: {
-                    if self.showLoadLabel {
+                    if self.config.showLoadLabel! {
                         self.loadingLabel.alpha = 0.0
                     }
                     self.loadingView.alpha = 0.0
@@ -127,16 +125,16 @@ class MLPlayerButtonView: UIView {
         state = .loading
         let aCircleTime = 2.0
         loadingView.isHidden = false
-        if !showLoadLabel {
+        if !config.showLoadLabel! {
             loadingLabel.isHidden = true
         }
         
-        if loadAnimating {
+        if config.loadAnimating! {
             loadingView.layer.add(MLGlobalAnimations.infiniteRotate(duration: aCircleTime), forKey: nil)
         }
     }
     func blockAnimate() {
-        if loadAnimating {
+        if config.loadAnimating! {
             DispatchQueue.main.async {
                 self.loadingView.layer.removeAllAnimations()
             }
@@ -150,8 +148,8 @@ class MLPlayerButtonView: UIView {
 
 extension MLPlayerButtonView: ViewConfiguration {
     func setupConstraints() {
-        heightAnchor.constraint(equalToConstant: height).isActive = true
-        widthAnchor.constraint(equalToConstant: width).isActive = true
+        heightAnchor.constraint(equalToConstant: config.height!).isActive = true
+        widthAnchor.constraint(equalToConstant: config.width!).isActive = true
         
         button.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         button.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -163,19 +161,17 @@ extension MLPlayerButtonView: ViewConfiguration {
         loadingView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         loadingView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         
-        loadingLabel.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor).isActive = true
-        loadingLabel.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor).isActive = true
-        loadingLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        loadingLabel.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor, constant: 16).isActive = true
+        loadingLabel.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor, constant: -16).isActive = true
+        loadingLabel.heightLayoutConstraint?.constant = config.height! - 36
         loadingLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor).isActive = true
         loadingLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor).isActive = true
     }
-    
     func buildViewHierarchy() {
         addSubview(button)
         addSubview(loadingView)
         addSubview(loadingLabel)
     }
-    
     func configureViews() {
         translatesAutoresizingMaskIntoConstraints = false
     }

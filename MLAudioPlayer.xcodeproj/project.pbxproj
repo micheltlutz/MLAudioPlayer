@@ -26,6 +26,7 @@
 		D0AC044B21231E88002584B2 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044A21231E88002584B2 /* ViewConfiguration.swift */; };
 		D0AC044E21231F28002584B2 /* MLGlobalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */; };
 		D0AC04562123635D002584B2 /* MLRetryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC04552123635D002584B2 /* MLRetryButton.swift */; };
+		D0AC045A2124A35F002584B2 /* MLPlayerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		D0AC044A21231E88002584B2 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLGlobalAnimations.swift; sourceTree = "<group>"; };
 		D0AC04552123635D002584B2 /* MLRetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLRetryButton.swift; sourceTree = "<group>"; };
+		D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPlayerConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				D0AC044A21231E88002584B2 /* ViewConfiguration.swift */,
 				D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */,
 				D0AC04552123635D002584B2 /* MLRetryButton.swift */,
+				D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				D0AC044321231CAD002584B2 /* UIColor+Hex.swift in Sources */,
 				D0AC043721231C36002584B2 /* MLPlayerButtonView.swift in Sources */,
 				D0AC043D21231C78002584B2 /* MLLabel.swift in Sources */,
+				D0AC045A2124A35F002584B2 /* MLPlayerConfig.swift in Sources */,
 				D0AC043421231A4C002584B2 /* MLAudioPlayerManager.swift in Sources */,
 				D0AC044B21231E88002584B2 /* ViewConfiguration.swift in Sources */,
 				D0AC04562123635D002584B2 /* MLRetryButton.swift in Sources */,
