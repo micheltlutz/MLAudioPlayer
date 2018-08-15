@@ -49,6 +49,19 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     internal var trackPlayerView: MLTrackPlayerView!
     internal var totalDuration: Float = 0.0
     internal var playerButton: MLPlayerButtonView!
+    internal let progressLabel: MLLabel = {
+        let progressLabel = MLLabel()
+        progressLabel.text = "0%"
+        return progressLabel
+    }()
+    
+    internal let progressBar: UIProgressView = {
+        let progressBar = UIProgressView(progressViewStyle: .default)
+        progressBar.progress = 0.0
+        progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 2)
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        return progressBar
+    }()
     internal var labelTimer: MLLabel = {
         let labelTimer = MLLabel()
         labelTimer.text = "00:00 / 00:00"
@@ -61,20 +74,28 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     }()
     convenience public init(urlAudio: String, config: MLPlayerConfig? = nil) {
         self.init(frame: .zero)
-        
         if let config = config {
             playerConfig = config
         }
         setupType()
+        setupProgressBar()
         setupTrackView()
         setupPlayer(urlAudio: urlAudio)
         setupViewConfiguration()
     }
+    
+    private func setupProgressBar() {
+        progressBar.trackTintColor = playerConfig.progressTrackTintColor
+        progressBar.tintColor = .white
+        progressBar.progressTintColor = playerConfig.progressTintColor
+        progressLabel.font = playerConfig.labelsFont
+        progressLabel.textColor = playerConfig.labelsColors
+    }
+    
     private func setupType() {
         if playerConfig.playerType == .full {
             playerButton = MLPlayerButtonView(config: nil)
         } else {
-            //playerButton = MLPlayerButtonView(width: (48), height: (48), type: .mini)
             let config = MLPlayerButtonConfig()
             config.width = 48
             config.height = 48
@@ -88,6 +109,8 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
                                                                      trackingTintColor: playerConfig.trackingTintColor!,
                                                                      trackingMinimumTrackColor: playerConfig.trackingMinimumTrackColor!,
                                                                      trackingMaximumTrackColor: playerConfig.trackingMaximumTrackColor!))
+        
+        trackPlayerView.isHidden = true
     }
     
     internal func setupPlayer(urlAudio: String) {
@@ -138,7 +161,17 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
 
 extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
     func didUpdateProgress(percentage: Int) {
-        labelTimer.text = "\(percentage)%"
+        labelTimer.text = ""
+        if playerConfig.playerType == .full {
+            playerButton.loadingLabel.text = "\(percentage)% \n \(playerConfig.loadingText!)"
+        } else {
+            progressLabel.text = "\(percentage)%"
+            labelTimer.text = playerConfig.loadingText
+            labelTimer.font = playerConfig.labelsLoadingFont
+        }
+        DispatchQueue.main.async {
+            self.progressBar.setProgress(Float(percentage) / 100.0, animated: true)
+        }
     }
     open func didError(error: Error) {
         playerButton.blockAnimate()
@@ -166,6 +199,10 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
         let stringTimer = makeCurrentTimerString(currentTime: currentTime, totalDuration: totalDuration)
         DispatchQueue.main.sync {
             self.labelTimer.text = stringTimer
+            self.progressBar.isHidden = true
+            self.trackPlayerView.isHidden = false
+            self.progressLabel.isHidden = true
+            self.labelTimer.font = self.playerConfig.labelsFont
         }
         self.trackPlayerView.changeMaximunValue(value: Float(totalDuration))
     }
@@ -193,6 +230,10 @@ extension MLAudioPlayer: ViewConfiguration {
         trackPlayerView.widthAnchor.constraint(equalToConstant: 224).isActive = true
         trackPlayerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
+        progressBar.topAnchor.constraint(equalTo: retryButton.bottomAnchor, constant: 8).isActive = true
+        progressBar.widthAnchor.constraint(equalToConstant: 224).isActive = true
+        progressBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
         labelTimer.topAnchor.constraint(equalTo: trackPlayerView.bottomAnchor, constant: 0).isActive = true
         labelTimer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
         labelTimer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
@@ -212,9 +253,16 @@ extension MLAudioPlayer: ViewConfiguration {
         playerButton.loadingView.heightAnchor.constraint(equalTo: playerButton.button.heightAnchor).isActive = true
         playerButton.loadingView.widthAnchor.constraint(equalTo: playerButton.button.widthAnchor).isActive = true
         
+        progressLabel.centerXAnchor.constraint(equalTo: playerButton.loadingView.centerXAnchor).isActive = true
+        progressLabel.centerYAnchor.constraint(equalTo: playerButton.loadingView.centerYAnchor).isActive = true
+        
         trackPlayerView.centerYAnchor.constraint(equalTo: playerButton.button.centerYAnchor).isActive = true
         trackPlayerView.leadingAnchor.constraint(equalTo: playerButton.button.trailingAnchor, constant: 24).isActive = true
         trackPlayerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        
+        progressBar.centerYAnchor.constraint(equalTo: playerButton.button.centerYAnchor).isActive = true
+        progressBar.leadingAnchor.constraint(equalTo: playerButton.button.trailingAnchor, constant: 24).isActive = true
+        progressBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
         
         labelTimer.textAlignment = .left
         labelTimer.topAnchor.constraint(equalTo: trackPlayerView.bottomAnchor, constant: 0).isActive = true
@@ -226,6 +274,7 @@ extension MLAudioPlayer: ViewConfiguration {
         playerButton.loadingLabel.widthAnchor.constraint(equalToConstant: 116).isActive = true
         playerButton.loadingLabel.textAlignment = .right
         playerButton.loadingLabel.numberOfLines = 1
+        playerButton.loadingLabel.isHidden = true
         
         retryButton.topAnchor.constraint(equalTo: playerButton.button.bottomAnchor, constant: 2).isActive = true
         retryButton.leadingAnchor.constraint(equalTo: playerButton.button.leadingAnchor).isActive = true
@@ -234,13 +283,17 @@ extension MLAudioPlayer: ViewConfiguration {
     func buildViewHierarchy() {
         if playerConfig.playerType == .full {
             addSubview(playerButton)
+            addSubview(playerButton)
             addSubview(retryButton)
             addSubview(trackPlayerView)
+            addSubview(progressBar)
             addSubview(labelTimer)
         } else {
             addSubview(playerButton.button)
             addSubview(playerButton.loadingView)
+            addSubview(progressLabel)
             addSubview(trackPlayerView)
+            addSubview(progressBar)
             addSubview(labelTimer)
             addSubview(playerButton.loadingLabel)
             addSubview(retryButton)

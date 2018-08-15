@@ -36,6 +36,8 @@ public struct MLPlayerConfig {
     public var trackingTintColor: UIColor? = UIColor(hex: "246BB3")
     public var trackingMinimumTrackColor: UIColor? = UIColor(hex: "246BB3")
     public var trackingMaximumTrackColor: UIColor? = UIColor(hex: "B3C4CE")
+    public var progressTintColor: UIColor? = UIColor(hex: "B3C4CE")
+    public var progressTrackTintColor: UIColor? = UIColor(hex: "B3C4CE").withAlphaComponent(0.5)
     public init(labelsColors: UIColor?, labelsFont: UIFont?, labelsLoadingFont: UIFont?, playerType: MLPlayerType?, loadingText: String?, loadErrorText: String?, imageNamePlayButton: String?, imageNamePauseButton: String?, imageNameLoading: String?, imageNameTrackingThumb: String?, trackingTintColor: UIColor?, trackingMinimumTrackColor: UIColor?, trackingMaximumTrackColor: UIColor?) {
         self.labelsColors = labelsColors
         self.labelsFont = labelsFont

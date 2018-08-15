@@ -158,8 +158,8 @@ $ git submodule update --init --recursive
 - pause
 - refresh
 - playerLoad
-- playerLoadMini
 - thumbTracking
+
 
 ```swift
 
@@ -170,6 +170,14 @@ var mlAudioPlayer: MLAudioPlayer = {
     return mlAudioPlayer
 }()
 
+var mlAudioPlayerMini: MLAudioPlayer = {
+    var config = MLPlayerConfig()
+    config.loadingText = "carregando"
+    config.playerType = .mini
+
+    let mlAudioPlayerMini = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3", config: config))
+    return mlAudioPlayerMini
+}()
 
 ```
 
