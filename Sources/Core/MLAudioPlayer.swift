@@ -67,7 +67,14 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         labelTimer.text = "00:00 / 00:00"
         return labelTimer
     }()
-    internal var retryButton = MLRetryButton()
+    /**
+     Define width for component default value UIScreen.main.bounds.width.
+     */
+    public static let widthPlayerFull: CGFloat = UIScreen.main.bounds.width
+    public static let heightPlayerFull: CGFloat = 216
+    public static let widthPlayerMini: CGFloat = UIScreen.main.bounds.width
+    public static let heightPlayerMini: CGFloat = 80
+    internal var retryButton: MLRetryButton!
     private var playerConfig: MLPlayerConfig = {
         let defaultConfig = MLPlayerConfig()
         return defaultConfig
@@ -80,10 +87,13 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         setupType()
         setupProgressBar()
         setupTrackView()
+        setupRetryButton()
         setupPlayer(urlAudio: urlAudio)
         setupViewConfiguration()
     }
-    
+    private func setupRetryButton() {
+        retryButton = MLRetryButton(text: playerConfig.tryAgainText)
+    }
     private func setupProgressBar() {
         progressBar.trackTintColor = playerConfig.progressTrackTintColor
         progressBar.tintColor = .white
@@ -217,11 +227,11 @@ extension MLAudioPlayer: ViewConfiguration {
     }
     
     private func contraintsFull() {
-        widthAnchor.constraint(equalToConstant: 368).isActive = true
-        heightAnchor.constraint(equalToConstant: 300).isActive = true
+        widthAnchor.constraint(equalToConstant: MLAudioPlayer.widthPlayerFull).isActive = true
+        heightAnchor.constraint(equalToConstant: MLAudioPlayer.heightPlayerFull).isActive = true
         
         playerButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        playerButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        playerButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         
         retryButton.topAnchor.constraint(equalTo: playerButton.bottomAnchor, constant: 8).isActive = true
         retryButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -240,8 +250,8 @@ extension MLAudioPlayer: ViewConfiguration {
     }
     
     private func constraintsMini() {
-        widthAnchor.constraint(equalToConstant: 368).isActive = true
-        heightAnchor.constraint(equalToConstant: 80).isActive = true
+        widthAnchor.constraint(equalToConstant: MLAudioPlayer.widthPlayerMini).isActive = true
+        heightAnchor.constraint(equalToConstant: MLAudioPlayer.heightPlayerMini).isActive = true
         
         playerButton.button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
         playerButton.button.topAnchor.constraint(equalTo: topAnchor).isActive = true
