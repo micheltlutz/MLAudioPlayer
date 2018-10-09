@@ -29,6 +29,7 @@ public struct MLPlayerConfig {
     public var playerType: MLPlayerType? = .full
     public var loadingText: String? = "loading"
     public var loadErrorText: String? = "Could not load"
+    public var tryAgainText: String? = "TRY AGAIN"
     public var imageNamePlayButton: String? = "play"
     public var imageNamePauseButton: String? = "pause"
     public var imageNameLoading: String? = "playerLoad"
