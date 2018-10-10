@@ -48,7 +48,7 @@ class MLAudioPlayerManager: NSObject{
     private func preparePlayer(url: URL) {
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(AVAudioSessionCategoryPlayback)
+            try session.setCategory(.playback, mode: .default)
             let soundData = try Data(contentsOf: url)
             audioPlayer = try AVAudioPlayer(data: soundData)
             audioPlayer.prepareToPlay()

@@ -173,6 +173,7 @@ var mlAudioPlayer: MLAudioPlayer = {
     let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3")
     return mlAudioPlayer
 }()
+
 /**
 Default Sizes
 MLAudioPlayer.widthPlayerFull = UIScreen.main.bounds.width
@@ -191,7 +192,7 @@ var mlAudioPlayerMini: MLAudioPlayer = {
 
 ### MLPlayerConfig
 
-Can tyou change any configuration on MLPlayerConfig
+Cant you change any configuration on MLPlayerConfig
 
 ```swift
 //Default configurations:
