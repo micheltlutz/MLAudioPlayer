@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
  s.social_media_url = 'https://twitter.com/michel_lutz'
  s.authors = { "Michel Anderson Lutz Teixeira" => "michel_lutz@icloud.com" }
  s.source = { :git => "https://github.com/micheltlutz/MLAudioPlayer.git", :tag => "v"+s.version.to_s }
- s.platforms = { :ios => "10.0" }
+ s.platforms = { :ios => "10.10" }
  s.requires_arc = true
 
  s.default_subspec = "Core"
