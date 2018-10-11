@@ -13,7 +13,7 @@
     <a title="MLAudioPlayer  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MLAudioPlayer Docs</a> (0% documented)</p>
+        <p><a href="index.html">MLAudioPlayer Docs</a> (18% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -124,8 +124,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 
-[![Travis](https://img.shields.io/travis/micheltlutz/MLAudioPlayer/master.svg)](https://travis-ci.org/micheltlutz/MLAudioPlayer/branches)
-[![SwiftFrameworkTemplate](https://img.shields.io/badge/SwiftFramework-Template-red.svg)](http://github.com/RahulKatariya/SwiftFrameworkTemplate)
 
 AudioPlayer for Swift projects
 
@@ -158,7 +156,7 @@ source &lsquo;https://github.com/CocoaPods/Specs.git&rsquo;
 platform :ios, &lsquo;10.0&rsquo;
 use_frameworks!
 
-pod &lsquo;MLAudioPlayer&rsquo;, &lsquo;~> 1.0&rsquo;
+pod &lsquo;MLAudioPlayer&rsquo;, &lsquo;~> 1.0.1&rsquo;
 &rdquo;`
 
 Then, run the following command:
@@ -184,7 +182,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 &ldquo;`ogdl
-github &quot;micheltlutz/MLAudioPlayer&rdquo; ~> 1.0
+github &quot;micheltlutz/MLAudioPlayer&rdquo; ~> 1.0.1
 &ldquo;`
 
 </details>
@@ -195,14 +193,14 @@ github &quot;micheltlutz/MLAudioPlayer&rdquo; ~> 1.0
 To use MLAudioPlayer as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
 &rdquo;` swift
-// swift-tools-version:4.1
+// swift-tools-version:4.2
 
 import PackageDescription
 
 let package = Package(
     name: &ldquo;HelloMLAudioPlayer&rdquo;,
     dependencies: [
-        .package(url: &ldquo;https://github.com/micheltlutz/MLAudioPlayer.git&rdquo;, .upToNextMajor(from: &ldquo;1.0&rdquo;))
+        .package(url: &ldquo;https://github.com/micheltlutz/MLAudioPlayer.git&rdquo;, .upToNextMajor(from: &ldquo;1.0.1&rdquo;))
     ],
     targets: [
         .target(name: &ldquo;HelloMLAudioPlayer&rdquo;, dependencies: [&ldquo;MLAudioPlayer&rdquo;])
@@ -286,6 +284,7 @@ var mlAudioPlayer: MLAudioPlayer = {
     let mlAudioPlayer = MLAudioPlayer(urlAudio: &quot;http://urlyouraudio.mp3&rdquo;)
     return mlAudioPlayer
 }()
+
 /**
 Default Sizes
 MLAudioPlayer.widthPlayerFull = UIScreen.main.bounds.width
@@ -304,7 +303,7 @@ var mlAudioPlayerMini: MLAudioPlayer = {
 
 ### MLPlayerConfig
 
-Can tyou change any configuration on MLPlayerConfig
+Cant you change any configuration on MLPlayerConfig
 
 &rdquo;`swift
 //Default configurations:
@@ -326,6 +325,10 @@ MLPlayerConfig {
     trackingMaximumTrackColor: UIColor? = UIColor(hex: &ldquo;B3C4CE&rdquo;)
     progressTintColor: UIColor? = UIColor(hex: &ldquo;B3C4CE&rdquo;)
     progressTrackTintColor: UIColor? = UIColor(hex: &ldquo;B3C4CE&rdquo;).withAlphaComponent(0.5)
+    widthPlayerFull = widthPlayerFull
+    heightPlayerFull = heightPlayerFull
+    widthPlayerMini = widthPlayerMini
+    heightPlayerMini = heightPlayerMini
 }
 &ldquo;`
 
@@ -343,7 +346,7 @@ MLPlayerConfig {
 
 <p>See <a href="http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html">Documentation</a></p>
 
-<p>MLAudioPlayer Docs (0% documented)</p>
+<p>MLAudioPlayer Docs (18% documented)</p>
 <h2 id='contributing' class='heading'>Contributing</h2>
 
 <p>Issues and pull requests are welcome!</p>
@@ -352,12 +355,15 @@ MLPlayerConfig {
 <ul>
 <li>[ ] Player type with cover image for audio</li>
 <li>[ ] Play local files (currently only url audio files)</li>
-<li>[ ] Migrate to Swift 4.2</li>
+<li>[x] Migrate to Swift 4.2 (Thanks <a href="https://github.com/maclacerda">@maclacerda</a>)</li>
 <li>[ ] 100% documented</li>
 </ul>
 <h2 id='author' class='heading'>Author</h2>
 
 <p>Michel Anderson Lutz Teixeira <a href="https://twitter.com/michel_lutz">@michel_lutz</a></p>
+<h2 id='contributions' class='heading'>Contributions</h2>
+
+<p><a href="https://github.com/maclacerda"><img src="https://avatars.githubusercontent.com/u/4759987?v=3" title="maclacerda" width="80" height="80"></a></p>
 <h2 id='license' class='heading'>License</h2>
 
 <p>MLAudioPlayer is released under the MIT license. See <a href="https://github.com/micheltlutz/MLAudioPlayer/blob/master/LICENSE">LICENSE</a> for details.</p>
@@ -365,7 +371,7 @@ MLPlayerConfig {
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="http://micheltlutz.me" target="_blank" rel="external">Michel Anderson Lutz Teixeira</a>. All rights reserved. (Last updated: 2018-10-09)</p>
+          <p>&copy; 2018 <a class="link" href="http://micheltlutz.me" target="_blank" rel="external">Michel Anderson Lutz Teixeira</a>. All rights reserved. (Last updated: 2018-10-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
