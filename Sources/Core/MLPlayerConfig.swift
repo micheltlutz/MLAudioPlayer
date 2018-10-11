@@ -39,7 +39,17 @@ public struct MLPlayerConfig {
     public var trackingMaximumTrackColor: UIColor? = UIColor(hex: "B3C4CE")
     public var progressTintColor: UIColor? = UIColor(hex: "B3C4CE")
     public var progressTrackTintColor: UIColor? = UIColor(hex: "B3C4CE").withAlphaComponent(0.5)
-    public init(labelsColors: UIColor?, labelsFont: UIFont?, labelsLoadingFont: UIFont?, playerType: MLPlayerType?, loadingText: String?, loadErrorText: String?, imageNamePlayButton: String?, imageNamePauseButton: String?, imageNameLoading: String?, imageNameTrackingThumb: String?, trackingTintColor: UIColor?, trackingMinimumTrackColor: UIColor?, trackingMaximumTrackColor: UIColor?) {
+    public var widthPlayerFull: CGFloat? = UIScreen.main.bounds.width
+    public var heightPlayerFull: CGFloat? = 216
+    public var widthPlayerMini: CGFloat? = UIScreen.main.bounds.width
+    public var heightPlayerMini: CGFloat? = 60
+
+    public init(labelsColors: UIColor?, labelsFont: UIFont?, labelsLoadingFont: UIFont?, playerType: MLPlayerType?,
+                loadingText: String?, loadErrorText: String?, imageNamePlayButton: String?,
+                imageNamePauseButton: String?, imageNameLoading: String?, imageNameTrackingThumb: String?,
+                trackingTintColor: UIColor?, trackingMinimumTrackColor: UIColor?,
+                trackingMaximumTrackColor: UIColor?, widthPlayerFull: CGFloat?, heightPlayerFull: CGFloat?,
+                widthPlayerMini: CGFloat?, heightPlayerMini: CGFloat?) {
         self.labelsColors = labelsColors
         self.labelsFont = labelsFont
         self.labelsLoadingFont = labelsLoadingFont
@@ -53,6 +63,10 @@ public struct MLPlayerConfig {
         self.trackingTintColor = trackingTintColor
         self.trackingMinimumTrackColor = trackingMinimumTrackColor
         self.trackingMaximumTrackColor = trackingMaximumTrackColor
+        self.widthPlayerFull = widthPlayerFull
+        self.heightPlayerFull = heightPlayerFull
+        self.widthPlayerMini = widthPlayerMini
+        self.heightPlayerMini = heightPlayerMini
     }
 }
 

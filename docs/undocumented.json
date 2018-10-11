@@ -16,337 +16,85 @@
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 25,
-      "symbol": "MLPlayerState",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 26,
-      "symbol": "MLPlayerState.idle",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 27,
-      "symbol": "MLPlayerState.loading",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 28,
-      "symbol": "MLPlayerState.loaded",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 29,
-      "symbol": "MLPlayerState.playing",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 30,
-      "symbol": "MLPlayerState.paused",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 31,
+      "line": 35,
       "symbol": "MLPlayerState.error",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 34,
-      "symbol": "MLPlayerType",
-      "symbol_kind": "source.lang.swift.decl.enum",
+      "line": 35,
+      "symbol": "MLPlayerState.idle",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
       "line": 35,
+      "symbol": "MLPlayerState.loaded",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
+      "line": 35,
+      "symbol": "MLPlayerState.loading",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
+      "line": 35,
+      "symbol": "MLPlayerState.paused",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
+      "line": 35,
+      "symbol": "MLPlayerState.playing",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
+      "line": 45,
       "symbol": "MLPlayerType.full",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 35,
+      "line": 45,
       "symbol": "MLPlayerType.mini",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 38,
-      "symbol": "MLAudioPlayerHelper",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 39,
-      "symbol": "MLAudioPlayerHelper.timerFormater(time:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 46,
+      "line": 64,
       "symbol": "MLAudioPlayer",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 47,
+      "line": 65,
       "symbol": "MLAudioPlayer.name",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 48,
-      "symbol": "MLAudioPlayer.audioPlayerManager",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 49,
-      "symbol": "MLAudioPlayer.trackPlayerView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 50,
-      "symbol": "MLAudioPlayer.totalDuration",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 51,
-      "symbol": "MLAudioPlayer.playerButton",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 52,
-      "symbol": "MLAudioPlayer.progressLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 58,
-      "symbol": "MLAudioPlayer.progressBar",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 65,
-      "symbol": "MLAudioPlayer.labelTimer",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 74,
-      "symbol": "MLAudioPlayer.heightPlayerFull",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 75,
-      "symbol": "MLAudioPlayer.widthPlayerMini",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 76,
-      "symbol": "MLAudioPlayer.heightPlayerMini",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 77,
-      "symbol": "MLAudioPlayer.retryButton",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 78,
+      "line": 104,
       "symbol": "MLAudioPlayer.playerConfig",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 82,
-      "symbol": "MLAudioPlayer.init(urlAudio:config:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 94,
-      "symbol": "MLAudioPlayer.setupRetryButton()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 97,
-      "symbol": "MLAudioPlayer.setupProgressBar()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 105,
-      "symbol": "MLAudioPlayer.setupType()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 117,
-      "symbol": "MLAudioPlayer.setupTrackView()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 126,
-      "symbol": "MLAudioPlayer.setupPlayer(urlAudio:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 150,
-      "symbol": "MLAudioPlayer.showErrorInfos()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 157,
-      "symbol": "MLAudioPlayer.showInfosTryAgain()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 164,
-      "symbol": "MLAudioPlayer.init(frame:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 167,
-      "symbol": "MLAudioPlayer.init(coder:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 173,
-      "symbol": "MLAudioPlayer.didUpdateProgress(percentage:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 186,
-      "symbol": "MLAudioPlayer.didError(error:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 190,
-      "symbol": "MLAudioPlayer.didPause()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 193,
-      "symbol": "MLAudioPlayer.didPlay()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 196,
-      "symbol": "MLAudioPlayer.didUpdateTimer(currentTime:totalDuration:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 201,
-      "symbol": "MLAudioPlayer.makeCurrentTimerString(currentTime:totalDuration:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 206,
-      "symbol": "MLAudioPlayer.readyToPlay(currentTime:totalDuration:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 221,
+      "line": 333,
       "symbol": "MLAudioPlayer.setupConstraints()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 229,
-      "symbol": "MLAudioPlayer.contraintsFull()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 252,
-      "symbol": "MLAudioPlayer.constraintsMini()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 293,
-      "symbol": "MLAudioPlayer.buildViewHierarchy()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayer.swift",
-      "line": 313,
-      "symbol": "MLAudioPlayer.configureViews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -408,70 +156,77 @@
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 34,
+      "line": 32,
+      "symbol": "MLAudioPlayerManagerDelegate.didFinishPlaying()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
+      "line": 35,
       "symbol": "MLAudioPlayerManager",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 35,
+      "line": 36,
       "symbol": "MLAudioPlayerManager.urlAudio",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 36,
+      "line": 37,
       "symbol": "MLAudioPlayerManager.timer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 37,
+      "line": 38,
       "symbol": "MLAudioPlayerManager.audioPlayer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 38,
+      "line": 39,
       "symbol": "MLAudioPlayerManager.volume",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 39,
+      "line": 40,
       "symbol": "MLAudioPlayerManager.isDownloading",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 40,
+      "line": 41,
       "symbol": "MLAudioPlayerManager.percentageDownload",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 41,
+      "line": 42,
       "symbol": "MLAudioPlayerManager.delegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 42,
+      "line": 43,
       "symbol": "MLAudioPlayerManager.init(urlAudio:volume:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 48,
+      "line": 49,
       "symbol": "MLAudioPlayerManager.preparePlayer(url:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -500,48 +255,55 @@
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
       "line": 79,
-      "symbol": "MLAudioPlayerManager.tryAgain()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 82,
-      "symbol": "MLAudioPlayerManager.trackNavigation(to:)",
+      "symbol": "MLAudioPlayerManager.reset()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
       "line": 85,
+      "symbol": "MLAudioPlayerManager.tryAgain()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
+      "line": 88,
+      "symbol": "MLAudioPlayerManager.trackNavigation(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
+      "line": 91,
       "symbol": "MLAudioPlayerManager.startTimer()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 93,
+      "line": 99,
       "symbol": "MLAudioPlayerManager.urlSession(_:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 100,
+      "line": 106,
       "symbol": "MLAudioPlayerManager.urlSession(_:downloadTask:didFinishDownloadingTo:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 104,
+      "line": 110,
       "symbol": "MLAudioPlayerManager.urlSession(_:didBecomeInvalidWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLAudioPlayerManager.swift",
-      "line": 109,
+      "line": 115,
       "symbol": "MLAudioPlayerManager.urlSession(_:task:didCompleteWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -962,20 +724,48 @@
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
       "line": 42,
-      "symbol": "MLPlayerConfig.init(labelsColors:labelsFont:labelsLoadingFont:playerType:loadingText:loadErrorText:imageNamePlayButton:imageNamePauseButton:imageNameLoading:imageNameTrackingThumb:trackingTintColor:trackingMinimumTrackColor:trackingMaximumTrackColor:)",
+      "symbol": "MLPlayerConfig.widthPlayerFull",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
+      "line": 43,
+      "symbol": "MLPlayerConfig.heightPlayerFull",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
+      "line": 44,
+      "symbol": "MLPlayerConfig.widthPlayerMini",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
+      "line": 45,
+      "symbol": "MLPlayerConfig.heightPlayerMini",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
+      "line": 47,
+      "symbol": "MLPlayerConfig.init(labelsColors:labelsFont:labelsLoadingFont:playerType:loadingText:loadErrorText:imageNamePlayButton:imageNamePauseButton:imageNameLoading:imageNameTrackingThumb:trackingTintColor:trackingMinimumTrackColor:trackingMaximumTrackColor:widthPlayerFull:heightPlayerFull:widthPlayerMini:heightPlayerMini:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
-      "line": 60,
+      "line": 74,
       "symbol": "MLPlayerConfig.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/michel/DeviOS/MLPods/MLAudioPlayer/Sources/Core/MLPlayerConfig.swift",
-      "line": 62,
+      "line": 76,
       "symbol": "MLPlayerConfig.init(playerType:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

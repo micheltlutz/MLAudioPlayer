@@ -11,8 +11,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 
-[![Travis](https://img.shields.io/travis/micheltlutz/MLAudioPlayer/master.svg)](https://travis-ci.org/micheltlutz/MLAudioPlayer/branches)
-[![SwiftFrameworkTemplate](https://img.shields.io/badge/SwiftFramework-Template-red.svg)](http://github.com/RahulKatariya/SwiftFrameworkTemplate)
 
 AudioPlayer for Swift projects
 
@@ -45,7 +43,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'MLAudioPlayer', '~> 1.0'
+pod 'MLAudioPlayer', '~> 1.0.1'
 ```
 
 Then, run the following command:
@@ -71,7 +69,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "micheltlutz/MLAudioPlayer" ~> 1.0
+github "micheltlutz/MLAudioPlayer" ~> 1.0.1
 ```
 
 </details>
@@ -82,14 +80,14 @@ github "micheltlutz/MLAudioPlayer" ~> 1.0
 To use MLAudioPlayer as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
 ``` swift
-// swift-tools-version:4.1
+// swift-tools-version:4.2
 
 import PackageDescription
 
 let package = Package(
     name: "HelloMLAudioPlayer",
     dependencies: [
-        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0"))
+        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0.1"))
     ],
     targets: [
         .target(name: "HelloMLAudioPlayer", dependencies: ["MLAudioPlayer"])
@@ -214,6 +212,10 @@ MLPlayerConfig {
 	trackingMaximumTrackColor: UIColor? = UIColor(hex: "B3C4CE")
 	progressTintColor: UIColor? = UIColor(hex: "B3C4CE")
 	progressTrackTintColor: UIColor? = UIColor(hex: "B3C4CE").withAlphaComponent(0.5)
+	widthPlayerFull = widthPlayerFull
+	heightPlayerFull = heightPlayerFull
+	widthPlayerMini = widthPlayerMini
+	heightPlayerMini = heightPlayerMini
 }
 ```
 
@@ -233,7 +235,7 @@ MLPlayerConfig {
 
 See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
 
-MLAudioPlayer Docs (0% documented)
+MLAudioPlayer Docs (18% documented)
 
 
 ## Contributing
@@ -244,12 +246,17 @@ Issues and pull requests are welcome!
 
 - [ ] Player type with cover image for audio
 - [ ] Play local files (currently only url audio files)
-- [ ] Migrate to Swift 4.2
+- [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
 - [ ] 100% documented
 
 ## Author
 
 Michel Anderson Lutz Teixeira [@michel_lutz](https://twitter.com/michel_lutz)
+
+## Contributions
+
+<a href="https://github.com/maclacerda"><img src="https://avatars.githubusercontent.com/u/4759987?v=3" title="maclacerda" width="80" height="80"></a>
+
 
 ## License
 

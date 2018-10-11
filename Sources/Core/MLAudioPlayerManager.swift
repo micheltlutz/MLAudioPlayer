@@ -29,6 +29,7 @@ protocol MLAudioPlayerManagerDelegate: class {
     func didPause()
     func didPlay()
     func didError(error: Error)
+    func didFinishPlaying()
 }
 
 class MLAudioPlayerManager: NSObject{
@@ -47,8 +48,7 @@ class MLAudioPlayerManager: NSObject{
     }
     private func preparePlayer(url: URL) {
         do {
-            let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             let soundData = try Data(contentsOf: url)
             audioPlayer = try AVAudioPlayer(data: soundData)
             audioPlayer.prepareToPlay()
@@ -75,6 +75,12 @@ class MLAudioPlayerManager: NSObject{
         audioPlayer.pause()
         timer.invalidate()
         delegate?.didPause()
+    }
+    open func reset() {
+        audioPlayer.pause()
+        timer.invalidate()
+        timer = nil
+        self.delegate?.didFinishPlaying()
     }
     open func tryAgain() {
         self.beginDownloadingFile()
