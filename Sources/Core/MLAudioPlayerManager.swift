@@ -22,6 +22,9 @@
 
 import AVFoundation
 
+/**
+ Protocol MLAudioPlayerManagerDelegate
+ */
 protocol MLAudioPlayerManagerDelegate: class {
     func didUpdateTimer(currentTime: Double, totalDuration: Double)
     func didUpdateProgress(percentage: Int)
@@ -33,22 +36,42 @@ protocol MLAudioPlayerManagerDelegate: class {
 }
 
 class MLAudioPlayerManager: NSObject{
+    ///Define a urlAudio: String
     private var urlAudio: String!
+    ///Define a timer: Timer
     private var timer: Timer!
+    ///Define a audioPlayer: AVAudioPlayer
     private var audioPlayer: AVAudioPlayer!
+    ///Var contains a volume float value
     var volume: Float!
+    ///Flag define if audio is downloading
     var isDownloading = false
+    ///Contains a int value for percentage of downloaded file audio
     var percentageDownload: Int = 0
+    ///Delegate
     var delegate: MLAudioPlayerManagerDelegate?
+    /**
+     This initializer start configurations for MLAudioPlayerManager
+     
+     - Parameter urlAudio: String
+     - Parameter volume: Float? default value 0.7
+     */
     init(urlAudio: String, volume: Float? = 0.7) {
         super.init()
         self.urlAudio = urlAudio
         self.volume = volume
         self.beginDownloadingFile()
     }
+    /**
+     This function configure AVAudioSession, create instance of AVAudioPlayer and configure this with volume and url Audio from initializer
+     
+     - Parameter url: URL
+     */
     private func preparePlayer(url: URL) {
+        let audioSession = AVAudioSession.sharedInstance()
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setActive(true)
             let soundData = try Data(contentsOf: url)
             audioPlayer = try AVAudioPlayer(data: soundData)
             audioPlayer.prepareToPlay()
@@ -58,6 +81,9 @@ class MLAudioPlayerManager: NSObject{
             delegate?.didError(error: error)
         }
     }
+    /**
+     This function start a download audio file
+     */
     private func beginDownloadingFile(){
         let configuration = URLSessionConfiguration.ephemeral
         let operationQueue = OperationQueue()
@@ -66,28 +92,59 @@ class MLAudioPlayerManager: NSObject{
         let downloadTask = urlSession.downloadTask(with: url)
         downloadTask.resume()
     }
+    /**
+     This function play audio
+     */
     open func play() {
         audioPlayer.play()
         startTimer()
         delegate?.didPlay()
     }
+    /**
+     This function pause audio
+     */
     open func pause() {
         audioPlayer.pause()
         timer.invalidate()
         delegate?.didPause()
     }
+    /**
+     This function reset audio
+     */
     open func reset() {
         audioPlayer.pause()
         timer.invalidate()
         timer = nil
-        self.delegate?.didFinishPlaying()
+        delegate?.didFinishPlaying()
     }
+    /**
+     This function stop audio session
+     */
+    open func stop() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false)
+        } catch {
+            print("ERROR STOP: setActive",error.localizedDescription)
+        }
+    }
+    /**
+     This function restart download file
+     */
     open func tryAgain() {
         self.beginDownloadingFile()
     }
+    /**
+     This function recieve a float value to current time audioplayer
+     
+     - Parameter to value: Float
+     */
     open func trackNavigation(to value: Float){
         audioPlayer.currentTime = Double(value)
     }
+    /**
+     This function star a Timer schedule
+     */
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.delegate?.didUpdateTimer(currentTime: self.audioPlayer.currentTime, totalDuration: self.audioPlayer.duration)

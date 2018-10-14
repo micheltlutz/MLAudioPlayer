@@ -43,7 +43,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'MLAudioPlayer', '~> 1.0.2'
+pod 'MLAudioPlayer', '~> 1.0.3'
 ```
 
 Then, run the following command:
@@ -69,7 +69,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "micheltlutz/MLAudioPlayer" ~> 1.0.2
+github "micheltlutz/MLAudioPlayer" ~> 1.0.3
 ```
 
 </details>
@@ -87,7 +87,7 @@ import PackageDescription
 let package = Package(
     name: "HelloMLAudioPlayer",
     dependencies: [
-        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0.2"))
+        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0.3"))
     ],
     targets: [
         .target(name: "HelloMLAudioPlayer", dependencies: ["MLAudioPlayer"])
@@ -190,7 +190,9 @@ var mlAudioPlayerMini: MLAudioPlayer = {
 
 ### MLPlayerConfig
 
-Cant you change any configuration on MLPlayerConfig
+Can you change any configuration on MLPlayerConfig
+
+#### See available configurations:
 
 ```swift
 //Default configurations:
@@ -218,6 +220,24 @@ MLPlayerConfig {
 	heightPlayerMini = heightPlayerMini
 }
 ```
+
+### Using Notification Center
+
+Usage: 
+
+```swift 
+NotificationCenter.default.post(name: Notification.Name.MLAudioPlayerNotification, 
+										object: nil,
+										userInfo: ["action":MLPlayerActions.stop])
+```
+Available Actions for MLAudioPlayer
+ 
+     - play
+     - pause
+     - stop
+     - reset
+
+
 
 ### Can you change the images names
 
