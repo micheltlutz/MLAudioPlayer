@@ -1,4 +1,25 @@
 # Change Log
+-----
+
+## [1.0.3 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.0.3) (2018-10-14)
+
+#### Add
+* Support a Notification center to inactive audio session using Notification.Name: .MLAudioPlayerNotification
+
+Usage: 
+
+```swift 
+NotificationCenter.default.post(name: Notification.Name.MLAudioPlayerNotification, 
+										object: nil,
+										userInfo: ["action":MLPlayerActions.stop])
+```
+Available Actions for MLAudioPlayer
+ 
+     - play
+     - pause
+     - stop
+     - reset
+
 
 -----
 

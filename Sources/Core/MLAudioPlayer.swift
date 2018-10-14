@@ -34,7 +34,17 @@ import UIKit
 public enum MLPlayerState: String {
     case idle, loading, loaded, playing, paused, error
 }
-
+/**
+ Available Actions for MLAudioPlayer
+ 
+     - play
+     - pause
+     - stop
+     - reset
+ */
+public enum MLPlayerActions: String {
+    case play, pause, stop, reset
+}
 /**
 Enum MLPlayerType states for player
 
@@ -165,12 +175,14 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         trackPlayerView.isHidden = true
     }
     /**
-     This function initialize MLAudioPlayerManager and condigure handlers
+     This function initialize MLAudioPlayerManager and condigure handlers, starts observables, MLAudioPlayerNotification to stop
 
      - Parameter urlAudio: String url for audio
      */
     internal func setupPlayer(urlAudio: String) {
         audioPlayerManager = MLAudioPlayerManager(urlAudio: urlAudio)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationController(_:)),
+                                               name: .MLAudioPlayerNotification, object: nil)
         audioPlayerManager.delegate = self
         playerButton.didPlay = { [weak self] in
             self?.audioPlayerManager.play()
@@ -197,13 +209,15 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      This function configure error texts and font
      */
     private func showErrorInfos() {
-        playerButton.loadingLabel.text = playerConfig.loadErrorText
-        playerButton.loadingLabel.font = playerConfig.labelsFont
-        retryButton.isHidden = false
-        retryButton.heightLayoutConstraint?.constant = 32
-        trackPlayerView.isUserInteractionEnabled = false
-        if playerConfig.playerType == .mini {
-            heightConstraint?.constant = 80
+        DispatchQueue.main.async {
+            self.playerButton.loadingLabel.text = self.playerConfig.loadErrorText
+            self.playerButton.loadingLabel.font = self.playerConfig.labelsFont
+            self.retryButton.isHidden = false
+            self.retryButton.heightLayoutConstraint?.constant = 32
+            self.trackPlayerView.isUserInteractionEnabled = false
+            if self.playerConfig.playerType == .mini {
+                self.heightConstraint?.constant = 80
+            }
         }
     }
     /**
@@ -230,6 +244,24 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    /**
+     This function controller action on AudioPlayer with NotificationCenter
+     */
+    @objc func notificationController(_ notification: NSNotification) {
+        if let action = notification.userInfo?["action"] as? MLPlayerActions {
+            switch action {
+            case .stop:
+                stop()
+            case .reset:
+                reset()
+            case .play:
+                playerButton.play()
+            case .pause:
+                playerButton.pause()
+            }
+        }
     }
 }
 
@@ -325,7 +357,21 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
     open func didFinishPlaying() {
         playerButton.pause()
     }
+    /**
+     This open function reset player
+     */
+    open func reset() {
+        audioPlayerManager.reset()
+    }
+    /**
+     This open function stop and reset player
+     */
+    open func stop() {
+        self.audioPlayerManager.stop()
+        playerButton.pause()
+    }
 }
+
 /**
  Extension MLAudioPlayer implements ViewConfiguration protocol
  */
@@ -445,4 +491,9 @@ extension MLAudioPlayer: ViewConfiguration {
         retryButton.button.setTitleColor(playerConfig.labelsColors, for: .normal)
         retryButton.isHidden = true
     }
+}
+
+extension Notification.Name {
+    ///Extension Notification name ***MLAudioPlayerNotification***
+    public static let MLAudioPlayerNotification = Notification.Name("MLAudioPlayerNotificationCenter")
 }
