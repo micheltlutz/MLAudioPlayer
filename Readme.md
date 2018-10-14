@@ -162,21 +162,18 @@ $ git submodule update --init --recursive
 ```swift
 import MLAudioPlayer
 
-/**
-Default Sizes
-MLAudioPlayer.widthPlayerMini = UIScreen.main.bounds.width
-MLAudioPlayer.heightPlayerMini = CGFloat(216)
-*/
+
+//Default Sizes
+//MLAudioPlayer.widthPlayerMini = UIScreen.main.bounds.width
+//MLAudioPlayer.heightPlayerMini = CGFloat(216)
 var mlAudioPlayer: MLAudioPlayer = {
     let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3")
     return mlAudioPlayer
 }()
 
-/**
-Default Sizes
-MLAudioPlayer.widthPlayerFull = UIScreen.main.bounds.width
-MLAudioPlayer.heightPlayerFull = CGFloat(80)
-*/
+//Default Sizes
+//MLAudioPlayer.widthPlayerFull = UIScreen.main.bounds.width
+//MLAudioPlayer.heightPlayerFull = CGFloat(80)
 var mlAudioPlayerMini: MLAudioPlayer = {
     var config = MLPlayerConfig()
     config.loadingText = "carregando"
@@ -188,11 +185,15 @@ var mlAudioPlayerMini: MLAudioPlayer = {
 }()
 ```
 
+
 ### MLPlayerConfig
+
 
 Can you change any configuration on MLPlayerConfig
 
+
 #### See available configurations:
+
 
 ```swift
 //Default configurations:
@@ -255,7 +256,7 @@ Available Actions for MLAudioPlayer
 
 See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
 
-MLAudioPlayer Docs (18% documented)
+MLAudioPlayer Docs (29% documented)
 
 
 ## Contributing
@@ -266,6 +267,7 @@ Issues and pull requests are welcome!
 
 - [ ] Player type with cover image for audio
 - [ ] Play local files (currently only url audio files)
+- [x] Suporte a Notification center to stop background audio
 - [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
 - [ ] 100% documented
 
