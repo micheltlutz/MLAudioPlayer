@@ -1,4 +1,13 @@
 # Change Log
+
+-----
+
+## [1.0.4 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.0.4) (2018-11-13)
+
+#### Remove
+
+Remove firs text loading from PlayerButton
+
 -----
 
 ## [1.0.3 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.0.3) (2018-10-14)
