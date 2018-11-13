@@ -14,7 +14,7 @@
     <a title="MLAudioPlayerManager Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">MLAudioPlayer Docs</a> (18% documented)</p>
+        <p><a href="../index.html">MLAudioPlayer Docs</a> (29% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -60,6 +60,9 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Enums/MLPlayerActions.html">MLPlayerActions</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/MLPlayerState.html">MLPlayerState</a>
               </li>
               <li class="nav-group-task">
@@ -70,6 +73,12 @@
           <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UIColor.html">UIColor</a>
               </li>
@@ -137,7 +146,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Define a urlAudio: String</p>
 
                       </div>
                       <div class="declaration">
@@ -164,7 +173,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Define a timer: Timer</p>
 
                       </div>
                       <div class="declaration">
@@ -191,7 +200,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Define a audioPlayer: AVAudioPlayer</p>
 
                       </div>
                       <div class="declaration">
@@ -218,7 +227,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Var contains a volume float value</p>
 
                       </div>
                       <div class="declaration">
@@ -245,7 +254,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Flag define if audio is downloading</p>
 
                       </div>
                       <div class="declaration">
@@ -272,7 +281,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Contains a int value for percentage of downloaded file audio</p>
 
                       </div>
                       <div class="declaration">
@@ -299,7 +308,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Delegate</p>
 
                       </div>
                       <div class="declaration">
@@ -326,7 +335,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This initializer start configurations for MLAudioPlayerManager</p>
 
                       </div>
                       <div class="declaration">
@@ -336,6 +345,37 @@
                           <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">urlAudio</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">volume</span><span class="p">:</span> <span class="kt">Float</span><span class="p">?</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>urlAudio</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>volume</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Float? default value 0.7</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -353,7 +393,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function configure AVAudioSession, create instance of AVAudioPlayer and configure this with volume and url Audio from initializer</p>
 
                       </div>
                       <div class="declaration">
@@ -363,6 +403,25 @@
                           <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">preparePlayer</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URL</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -380,7 +439,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function start a download audio file</p>
 
                       </div>
                       <div class="declaration">
@@ -407,7 +466,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function play audio</p>
 
                       </div>
                       <div class="declaration">
@@ -434,7 +493,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function pause audio</p>
 
                       </div>
                       <div class="declaration">
@@ -461,7 +520,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function reset audio</p>
 
                       </div>
                       <div class="declaration">
@@ -469,6 +528,33 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13MLAudioPlayer0aB7ManagerC4stopyyF"></a>
+                    <a name="//apple_ref/swift/Method/stop()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13MLAudioPlayer0aB7ManagerC4stopyyF">stop()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This function stop audio session</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">stop</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -488,7 +574,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function restart download file</p>
 
                       </div>
                       <div class="declaration">
@@ -515,7 +601,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function recieve a float value to current time audioplayer</p>
 
                       </div>
                       <div class="declaration">
@@ -542,7 +628,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function star a Timer schedule</p>
 
                       </div>
                       <div class="declaration">
@@ -673,7 +759,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="http://micheltlutz.me" target="_blank" rel="external">Michel Anderson Lutz Teixeira</a>. All rights reserved. (Last updated: 2018-10-10)</p>
+          <p>&copy; 2018 <a class="link" href="http://micheltlutz.me" target="_blank" rel="external">Michel Anderson Lutz Teixeira</a>. All rights reserved. (Last updated: 2018-10-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

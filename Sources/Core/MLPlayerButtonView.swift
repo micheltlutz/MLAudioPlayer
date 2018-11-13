@@ -51,7 +51,7 @@ class MLPlayerButtonView: UIView {
     
     internal let loadingLabel: MLLabel = {
         let loadingLabel = MLLabel()
-        loadingLabel.text = "loading"
+        loadingLabel.text = ""
         return loadingLabel
     }()
     
