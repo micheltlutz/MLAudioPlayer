@@ -106,6 +106,14 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      */
     open private(set) var heightConstraint: NSLayoutConstraint?
     /**
+     Handler indicates update in contraint height
+     */
+    open var didUpdateHeightConstraint: ((_ constant: CGFloat) -> Void)?
+    /**
+     Indicates a height CGFloat value for Main View
+     */
+    open var heightConstant: CGFloat!
+    /**
      Contains NSLayoutConstraint self widthAnchor.constraint
      */
     open private(set) var widthConstraint: NSLayoutConstraint?
@@ -155,13 +163,16 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     private func setupType() {
         if playerConfig.playerType == .full {
             playerButton = MLPlayerButtonView(config: nil)
+            heightConstant = playerConfig.heightPlayerFull!
         } else {
             let config = MLPlayerButtonConfig()
             config.width = 48
             config.height = 48
             config.playerType = .mini
             playerButton = MLPlayerButtonView(config: config)
+            heightConstant = playerConfig.heightPlayerMini!
         }
+        didUpdateHeightConstraint?(heightConstant)
     }
     /**
      This function configure trackPlayerView with MLTrackPlayerView and playerConfig infos
@@ -216,8 +227,12 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
             self.retryButton.heightLayoutConstraint?.constant = 32
             self.trackPlayerView.isUserInteractionEnabled = false
             if self.playerConfig.playerType == .mini {
-                self.heightConstraint?.constant = 80
+                self.heightConstant = (self.playerConfig.heightPlayerMini! + 27)
+            } else {
+                self.heightConstant = (self.playerConfig.heightPlayerFull! + 35)
             }
+            self.heightConstraint?.constant = self.heightConstant
+            self.didUpdateHeightConstraint?(self.heightConstant)
         }
     }
     /**
@@ -230,8 +245,12 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         retryButton.heightLayoutConstraint?.constant = 2
         trackPlayerView.isUserInteractionEnabled = true
         if playerConfig.playerType == .mini {
-            heightConstraint?.constant = 60
+            heightConstant = playerConfig.heightPlayerMini!
+        } else {
+            heightConstant = playerConfig.heightPlayerFull!
         }
+        heightConstraint?.constant = heightConstant
+        didUpdateHeightConstraint?(heightConstant)
     }
     /**
      :nodoc:
@@ -278,7 +297,7 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
         } else {
             progressLabel.text = "\(percentage)%"
             labelTimer.text = playerConfig.loadingText
-            labelTimer.font = playerConfig.labelsLoadingFont
+            labelTimer.font = playerConfig.labelsTimerFont
         }
         DispatchQueue.main.async {
             self.progressBar.setProgress(Float(percentage) / 100.0, animated: true)
@@ -347,7 +366,14 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
             self.progressBar.isHidden = true
             self.trackPlayerView.isHidden = false
             self.progressLabel.isHidden = true
-            self.labelTimer.font = self.playerConfig.labelsFont
+            self.labelTimer.font = self.playerConfig.labelsTimerFont
+            if self.playerConfig.playerType == .mini {
+                self.heightConstant = (self.playerConfig.heightPlayerMini!)
+            } else {
+                self.heightConstant = (self.playerConfig.heightPlayerFull!)
+            }
+            self.heightConstraint?.constant = self.heightConstant
+            self.didUpdateHeightConstraint?(self.heightConstant)
         }
         self.trackPlayerView.changeMaximunValue(value: Float(totalDuration))
     }
@@ -391,6 +417,7 @@ extension MLAudioPlayer: ViewConfiguration {
         widthConstraint?.isActive = true
 
         heightConstraint = heightAnchor.constraint(equalToConstant: playerConfig.heightPlayerFull!)
+        didUpdateHeightConstraint?(CGFloat(playerConfig.heightPlayerFull!))
         heightConstraint?.isActive = true
 
         playerButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -420,6 +447,7 @@ extension MLAudioPlayer: ViewConfiguration {
 
         heightConstraint = heightAnchor.constraint(equalToConstant: playerConfig.heightPlayerMini!)
         heightConstraint?.isActive = true
+        didUpdateHeightConstraint?(CGFloat(playerConfig.heightPlayerMini!))
         
         playerButton.button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
         playerButton.button.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -462,7 +490,6 @@ extension MLAudioPlayer: ViewConfiguration {
      */
     func buildViewHierarchy() {
         if playerConfig.playerType == .full {
-            addSubview(playerButton)
             addSubview(playerButton)
             addSubview(retryButton)
             addSubview(trackPlayerView)
