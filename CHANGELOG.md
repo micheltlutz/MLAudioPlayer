@@ -1,6 +1,38 @@
 # Change Log
 
 -----
+## [1.0.5 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.0.5) (2018-11-28)
+
+#### Add
+* Handler indicate when height of player change.
+
+```swift
+didUpdateHeightConstraint: ((_ constant: CGFloat) -> Void)?
+```
+##### Usage:
+
+```swift
+let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3")
+mlAudioPlayer.didUpdateHeightConstraint = { constant in
+            self.heightConstraint?.constant = (constant + 32)
+        }
+```
+
+#### Change
+
+Change default values in MLPlayerConfig 
+
+heightPlayerFull -> from: 216 to: 177    
+heightPlayerMini -> from: 60 to: 50
+
+New attribute usad on labels timer: 
+
+```swift
+public var labelsTimerFont: UIFont? = UIFont.systemFont(ofSize: 12)
+```
+
+
+-----
 
 ## [1.0.4 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.0.4) (2018-11-13)
 

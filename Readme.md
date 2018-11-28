@@ -43,7 +43,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'MLAudioPlayer', '~> 1.0.4'
+pod 'MLAudioPlayer', '~> 1.0.5'
 ```
 
 Then, run the following command:
@@ -69,7 +69,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "micheltlutz/MLAudioPlayer" ~> 1.0.4
+github "micheltlutz/MLAudioPlayer" ~> 1.0.5
 ```
 
 </details>
@@ -87,7 +87,7 @@ import PackageDescription
 let package = Package(
     name: "HelloMLAudioPlayer",
     dependencies: [
-        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0.4"))
+        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0.5"))
     ],
     targets: [
         .target(name: "HelloMLAudioPlayer", dependencies: ["MLAudioPlayer"])
@@ -183,6 +183,12 @@ var mlAudioPlayerMini: MLAudioPlayer = {
     let mlAudioPlayerMini = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3", config: config)
     return mlAudioPlayerMini
 }()
+
+//Can you listenign a player heightConstraint changes
+mlAudioPlayer.didUpdateHeightConstraint = { constant in
+	print("heightConstraint changed"
+}
+
 ```
 
 
@@ -202,6 +208,7 @@ MLPlayerConfig {
 	labelsColors: UIColor? = UIColor(hex: "5C7A98")
 	labelsFont: UIFont? = UIFont.systemFont(ofSize: 14)
 	labelsLoadingFont: UIFont? = UIFont.boldSystemFont(ofSize: 14)
+   labelsTimerFont: UIFont? = UIFont.systemFont(ofSize: 12)
 	playerType: MLPlayerType? = .full
 	loadingText: String? = "loading"
 	loadErrorText: String? = "Could not load"
@@ -256,7 +263,7 @@ Available Actions for MLAudioPlayer
 
 See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
 
-MLAudioPlayer Docs (29% documented)
+MLAudioPlayer Docs (31% documented)
 
 
 ## Contributing

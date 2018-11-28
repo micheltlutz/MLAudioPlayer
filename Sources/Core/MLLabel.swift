@@ -23,7 +23,11 @@
 import UIKit
 
 class MLLabel: UILabel {
+    ///heightLayoutConstraint to change value
     var heightLayoutConstraint: NSLayoutConstraint?
+    /*
+     Initializer
+     */
     init() {
         super.init(frame: .zero)
         text = ""

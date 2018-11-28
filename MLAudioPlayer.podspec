@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
  s.name = 'MLAudioPlayer'
- s.version = '1.0.4'
+ s.version = '1.0.5'
  s.license = { :type => "MIT", :file => "LICENSE" }
  s.summary = 'AudioPlayer for Swift projects'
  s.homepage = 'http://micheltlutz.me'
