@@ -22,6 +22,9 @@
 
 import UIKit
 
+/*
+ MLTrackingConfig - Struct model
+ */
 struct MLTrackingConfig {
     var imageNameTrackingThumb: String
     var trackingTintColor: UIColor
@@ -30,8 +33,8 @@ struct MLTrackingConfig {
 }
 
 class MLTrack: UISlider {
+    ///Height for line tracking
     var trackHeight: CGFloat = 4
-    
     init(config: MLTrackingConfig) {
         super.init(frame: .zero)
         isContinuous = false
@@ -45,7 +48,7 @@ class MLTrack: UISlider {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /// override trackRect() with bounds and var trackHeight
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: trackHeight))
     }
