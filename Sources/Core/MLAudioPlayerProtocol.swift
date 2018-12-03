@@ -24,5 +24,5 @@ import Foundation
 
 protocol MLAudioPlayerProtocol: class {
     var audioPlayerManager: MLAudioPlayerManager! { get set }
-    func setupPlayer(urlAudio: String)
+    func setupPlayer(urlAudio: String, isLocalFile: Bool)
 }

@@ -166,10 +166,21 @@ import MLAudioPlayer
 //Default Sizes
 //MLAudioPlayer.widthPlayerMini = UIScreen.main.bounds.width
 //MLAudioPlayer.heightPlayerMini = CGFloat(216)
+
+// For playing stream/online files
 var mlAudioPlayer: MLAudioPlayer = {
+    // For playing the stream/online files
     let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3")
     return mlAudioPlayer
 }()
+
+// For playing local storage files
+var mlLocalAudioPlayer: MLAudioPlayer = {
+    // For playing the stream/online files
+    let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyourlocalaudio.mp3", isLocalFile: true)
+    return mlAudioPlayer
+}()
+
 
 //Default Sizes
 //MLAudioPlayer.widthPlayerFull = UIScreen.main.bounds.width
@@ -273,7 +284,7 @@ Issues and pull requests are welcome!
 ## Todo
 
 - [ ] Player type with cover image for audio
-- [ ] Play local files (currently only url audio files)
+- [x] Play local files (Thanks [@maclacerda](https://github.com/maclacerda))
 - [x] Suporte a Notification center to stop background audio
 - [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
 - [ ] 100% documented
