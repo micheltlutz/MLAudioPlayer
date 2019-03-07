@@ -126,10 +126,10 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     /**
      Initializar MLAudioPlayer
 
-     - Parameter urlAudio: String url for audio
+     - Parameter urlAudio: String url for audio [local or stream]
      - Parameter config: MLPlayerConfig? with playerconfiguration
      */
-    convenience public init(urlAudio: String, config: MLPlayerConfig? = nil) {
+    convenience public init(urlAudio: String, config: MLPlayerConfig? = nil, isLocalFile: Bool = false) {
         self.init(frame: .zero)
         if let config = config {
             playerConfig = config
@@ -138,7 +138,7 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         setupProgressBar()
         setupTrackView()
         setupRetryButton()
-        setupPlayer(urlAudio: urlAudio)
+        setupPlayer(urlAudio: urlAudio, isLocalFile: isLocalFile)
         setupViewConfiguration()
     }
     /**
@@ -190,7 +190,7 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
 
      - Parameter urlAudio: String url for audio
      */
-    internal func setupPlayer(urlAudio: String) {
+    internal func setupPlayer(urlAudio: String, isLocalFile: Bool) {
         audioPlayerManager = MLAudioPlayerManager(urlAudio: urlAudio)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationController(_:)),
                                                name: .MLAudioPlayerNotification, object: nil)

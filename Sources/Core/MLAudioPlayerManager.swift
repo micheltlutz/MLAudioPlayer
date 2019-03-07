@@ -55,12 +55,24 @@ class MLAudioPlayerManager: NSObject{
      
      - Parameter urlAudio: String
      - Parameter volume: Float? default value 0.7
+     - Parameter isLocalFile: Bool default false
      */
-    init(urlAudio: String, volume: Float? = 0.7) {
+    init(urlAudio: String, volume: Float? = 0.7, isLocalFile: Bool = false) {
         super.init()
         self.urlAudio = urlAudio
         self.volume = volume
-        self.beginDownloadingFile()
+        
+        if !isLocalFile {
+            self.beginDownloadingFile()
+        } else {
+            // If local file, trying load the file
+            guard let url = URL(string: urlAudio) else {
+                print("Ocorreu um erro ao tentar carregar o arquivo especificado.")
+                return
+            }
+            
+            self.preparePlayer(url: url)
+        }
     }
     /**
      This function configure AVAudioSession, create instance of AVAudioPlayer and configure this with volume and url Audio from initializer
