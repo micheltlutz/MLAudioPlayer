@@ -1,6 +1,26 @@
 # Change Log
 
 -----
+## [1.1.0 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.1.0) (2019-03-07)
+
+#### Add
+* MLPlayerConfig options
+
+```swift
+MLPlayerConfig.tryAgainFont: UIFont?
+MLPlayerConfig.tryAgainColor: UIColor?
+```
+
+* Playing local storage files
+
+```swift
+var mlLocalAudioPlayer: MLAudioPlayer = {
+    // For playing the stream/online files
+    let mlAudioPlayer = MLAudioPlayer(urlAudio: "file://urlyourlocalaudio.mp3", isLocalFile: true)
+    return mlAudioPlayer
+}()
+```
+-----
 ## [1.0.5 - Swift 4.2](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.0.5) (2018-11-28)
 
 #### Add

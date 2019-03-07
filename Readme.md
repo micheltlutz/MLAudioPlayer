@@ -43,7 +43,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'MLAudioPlayer', '~> 1.0.5'
+pod 'MLAudioPlayer', '~> 1.1.0'
 ```
 
 Then, run the following command:
@@ -69,7 +69,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "micheltlutz/MLAudioPlayer" ~> 1.0.5
+github "micheltlutz/MLAudioPlayer" ~> 1.1.0
 ```
 
 </details>
@@ -87,7 +87,7 @@ import PackageDescription
 let package = Package(
     name: "HelloMLAudioPlayer",
     dependencies: [
-        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.0.5"))
+        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.1.0"))
     ],
     targets: [
         .target(name: "HelloMLAudioPlayer", dependencies: ["MLAudioPlayer"])
@@ -177,7 +177,7 @@ var mlAudioPlayer: MLAudioPlayer = {
 // For playing local storage files
 var mlLocalAudioPlayer: MLAudioPlayer = {
     // For playing the stream/online files
-    let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyourlocalaudio.mp3", isLocalFile: true)
+    let mlAudioPlayer = MLAudioPlayer(urlAudio: "file://urlyourlocalaudio.mp3", isLocalFile: true)
     return mlAudioPlayer
 }()
 
@@ -224,6 +224,8 @@ MLPlayerConfig {
 	loadingText: String? = "loading"
 	loadErrorText: String? = "Could not load"
 	tryAgainText: String? = "TRY AGAIN"
+	tryAgainFont: UIFont? = UIFont.systemFont(ofSize: 14)
+	tryAgainColor: UIColor? = UIColor(hex: "246BB3")
 	imageNamePlayButton: String? = "play"
 	imageNamePauseButton: String? = "pause"
 	imageNameLoading: String? = "playerLoad"
