@@ -146,6 +146,12 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      */
     private func setupRetryButton() {
         retryButton = MLRetryButton(text: playerConfig.tryAgainText)
+        if let font = playerConfig.tryAgainFont {
+            retryButton.button.titleLabel?.font = font
+        }
+        if let color = playerConfig.tryAgainColor {
+            retryButton.button.setTitleColor(color, for: .normal)
+        }
     }
     /**
      This function configure a profressbar with colors on playerConfig
@@ -227,6 +233,7 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
             self.retryButton.heightLayoutConstraint?.constant = 32
             self.trackPlayerView.isUserInteractionEnabled = false
             if self.playerConfig.playerType == .mini {
+                self.labelTimer.text = self.playerConfig.loadErrorText
                 self.heightConstant = (self.playerConfig.heightPlayerMini! + 27)
             } else {
                 self.heightConstant = (self.playerConfig.heightPlayerFull! + 35)
@@ -239,7 +246,7 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      This function configure loading text and font
      */
     private func showInfosTryAgain() {
-        playerButton.loadingLabel.text = playerConfig.loadingText
+        playerButton.loadingLabel.text = playerConfig.loadErrorText
         playerButton.loadingLabel.font = playerConfig.labelsLoadingFont
         retryButton.isHidden = true
         retryButton.heightLayoutConstraint?.constant = 2
@@ -473,7 +480,7 @@ extension MLAudioPlayer: ViewConfiguration {
         labelTimer.textAlignment = .left
         labelTimer.topAnchor.constraint(equalTo: trackPlayerView.bottomAnchor, constant: 0).isActive = true
         labelTimer.leadingAnchor.constraint(equalTo: trackPlayerView.leadingAnchor, constant: 0).isActive = true
-        labelTimer.widthAnchor.constraint(equalToConstant: 128).isActive = true
+        labelTimer.widthAnchor.constraint(equalToConstant: 180).isActive = true
         
         playerButton.loadingLabel.topAnchor.constraint(equalTo: labelTimer.topAnchor, constant: 0).isActive = true
         playerButton.loadingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
@@ -515,7 +522,6 @@ extension MLAudioPlayer: ViewConfiguration {
         labelTimer.font = playerConfig.labelsFont
         playerButton.loadingLabel.font = playerConfig.labelsLoadingFont
         playerButton.loadingLabel.textColor = playerConfig.labelsColors
-        retryButton.button.setTitleColor(playerConfig.labelsColors, for: .normal)
         retryButton.isHidden = true
     }
 }

@@ -31,6 +31,8 @@ public struct MLPlayerConfig {
     public var loadingText: String? = "loading"
     public var loadErrorText: String? = "Could not load"
     public var tryAgainText: String? = "TRY AGAIN"
+    public var tryAgainFont: UIFont? = UIFont.systemFont(ofSize: 14)
+    public var tryAgainColor: UIColor? = UIColor(hex: "246BB3")
     public var imageNamePlayButton: String? = "play"
     public var imageNamePauseButton: String? = "pause"
     public var imageNameLoading: String? = "playerLoad"
