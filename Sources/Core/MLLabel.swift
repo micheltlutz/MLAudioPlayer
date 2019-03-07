@@ -22,18 +22,21 @@
 
 import UIKit
 
-class MLLabelTimerPlayerView: UILabel {
+class MLLabel: UILabel {
+    ///heightLayoutConstraint to change value
+    var heightLayoutConstraint: NSLayoutConstraint?
+    /*
+     Initializer
+     */
     init() {
         super.init(frame: .zero)
-        text = "00:00 / 00:00"
+        text = ""
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 16).isActive = true
-        textColor = UIColor(hex: "5C7A98")
+        heightLayoutConstraint = heightAnchor.constraint(equalToConstant: 17)
+        heightLayoutConstraint?.isActive = true
+        lineBreakMode = .byWordWrapping
+        numberOfLines = 0
         textAlignment = .center
-    }
-    
-    func updateLabel() {
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

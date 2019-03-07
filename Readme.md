@@ -1,5 +1,9 @@
 # MLAudioPlayer
 
+<p align="center">
+ <img width="300" height="300"src="http://micheltlutz.me/imagens/projetos/MLAudioPlayer/MLAUDIOPLAYER.png">
+ </p>
+
 [![Platforms](https://img.shields.io/cocoapods/p/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 [![License](https://img.shields.io/cocoapods/l/MLAudioPlayer.svg)](https://raw.githubusercontent.com/micheltlutz/MLAudioPlayer/master/LICENSE)
 
@@ -7,8 +11,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 
-[![Travis](https://img.shields.io/travis/micheltlutz/MLAudioPlayer/master.svg)](https://travis-ci.org/micheltlutz/MLAudioPlayer/branches)
-[![SwiftFrameworkTemplate](https://img.shields.io/badge/SwiftFramework-Template-red.svg)](http://github.com/RahulKatariya/SwiftFrameworkTemplate)
 
 AudioPlayer for Swift projects
 
@@ -19,7 +21,7 @@ AudioPlayer for Swift projects
 
 ## Requirements
 
-- iOS 10.0+ / tvOS 9.0+ 
+- iOS 10.0+
 - Xcode 9.0+
 
 ## Installation
@@ -41,7 +43,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'MLAudioPlayer', '~> 0.0.1'
+pod 'MLAudioPlayer', '~> 1.1.0'
 ```
 
 Then, run the following command:
@@ -67,7 +69,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "micheltlutz/MLAudioPlayer" ~> 0.0.1
+github "micheltlutz/MLAudioPlayer" ~> 1.1.0
 ```
 
 </details>
@@ -78,14 +80,14 @@ github "micheltlutz/MLAudioPlayer" ~> 0.0.1
 To use MLAudioPlayer as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
 ``` swift
-// swift-tools-version:4.1
+// swift-tools-version:4.2
 
 import PackageDescription
 
 let package = Package(
     name: "HelloMLAudioPlayer",
     dependencies: [
-        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "0.0.1"))
+        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.1.0"))
     ],
     targets: [
         .target(name: "HelloMLAudioPlayer", dependencies: ["MLAudioPlayer"])
@@ -148,38 +150,155 @@ $ git submodule update --init --recursive
 
 ## Usage
 
-### You need two image files with named in your Assets 
+### You need these images files with named in your Assets 
 
-- questionUnchecked
-- questionChecked
+- play
+- pause
+- refresh
+- playerLoad
+- thumbTracking
+
 
 ```swift
+import MLAudioPlayer
 
-import MLQuestionCheck
 
-let question1 = MLQuestionCheck(question: "You are ok?")
-question1.didChangeState = { checked in
-print("question1 checked? \(checked)")
+//Default Sizes
+//MLAudioPlayer.widthPlayerMini = UIScreen.main.bounds.width
+//MLAudioPlayer.heightPlayerMini = CGFloat(216)
+
+// For playing stream/online files
+var mlAudioPlayer: MLAudioPlayer = {
+    // For playing the stream/online files
+    let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3")
+    return mlAudioPlayer
+}()
+
+// For playing local storage files
+var mlLocalAudioPlayer: MLAudioPlayer = {
+    // For playing the stream/online files
+    let mlAudioPlayer = MLAudioPlayer(urlAudio: "file://urlyourlocalaudio.mp3", isLocalFile: true)
+    return mlAudioPlayer
+}()
+
+
+//Default Sizes
+//MLAudioPlayer.widthPlayerFull = UIScreen.main.bounds.width
+//MLAudioPlayer.heightPlayerFull = CGFloat(80)
+var mlAudioPlayerMini: MLAudioPlayer = {
+    var config = MLPlayerConfig()
+    config.loadingText = "carregando"
+    config.playerType = .mini
+    config.tryAgainText = "TENTAR NOVAMENTE"
+
+    let mlAudioPlayerMini = MLAudioPlayer(urlAudio: "http://urlyouraudio.mp3", config: config)
+    return mlAudioPlayerMini
+}()
+
+//Can you listenign a player heightConstraint changes
+mlAudioPlayer.didUpdateHeightConstraint = { constant in
+	print("heightConstraint changed"
 }
 
 ```
 
-### You can Change the image name 
+
+### MLPlayerConfig
+
+
+Can you change any configuration on MLPlayerConfig
+
+
+#### See available configurations:
+
+
 ```swift
+//Default configurations:
 
-question1.uncheckedImageName = "new image name"
-question1.checkedImageName = "new image name"
-question1.setupCheck() // to change configuration buttons
-
+MLPlayerConfig {
+	labelsColors: UIColor? = UIColor(hex: "5C7A98")
+	labelsFont: UIFont? = UIFont.systemFont(ofSize: 14)
+	labelsLoadingFont: UIFont? = UIFont.boldSystemFont(ofSize: 14)
+   labelsTimerFont: UIFont? = UIFont.systemFont(ofSize: 12)
+	playerType: MLPlayerType? = .full
+	loadingText: String? = "loading"
+	loadErrorText: String? = "Could not load"
+	tryAgainText: String? = "TRY AGAIN"
+	tryAgainFont: UIFont? = UIFont.systemFont(ofSize: 14)
+	tryAgainColor: UIColor? = UIColor(hex: "246BB3")
+	imageNamePlayButton: String? = "play"
+	imageNamePauseButton: String? = "pause"
+	imageNameLoading: String? = "playerLoad"
+	imageNameTrackingThumb: String? = "thumbTracking"
+	trackingTintColor: UIColor? = UIColor(hex: "246BB3")
+	trackingMinimumTrackColor: UIColor? = UIColor(hex: "246BB3")
+	trackingMaximumTrackColor: UIColor? = UIColor(hex: "B3C4CE")
+	progressTintColor: UIColor? = UIColor(hex: "B3C4CE")
+	progressTrackTintColor: UIColor? = UIColor(hex: "B3C4CE").withAlphaComponent(0.5)
+	widthPlayerFull = widthPlayerFull
+	heightPlayerFull = heightPlayerFull
+	widthPlayerMini = widthPlayerMini
+	heightPlayerMini = heightPlayerMini
+}
 ```
+
+### Using Notification Center
+
+Usage: 
+
+```swift 
+NotificationCenter.default.post(name: Notification.Name.MLAudioPlayerNotification, 
+										object: nil,
+										userInfo: ["action":MLPlayerActions.stop])
+```
+Available Actions for MLAudioPlayer
+ 
+     - play
+     - pause
+     - stop
+     - reset
+
+
+
+### Can you change the images names
+
+```swift
+	var config = MLPlayerConfig()
+	config. imageNamePlayButton = "customPlayButton"
+```
+
+<p align="center">
+ <img width="350" height="317"src="http://micheltlutz.me/imagens/projetos/MLAudioPlayer/IMG_4649.jpg"> 
+</p>
+
+
+## Docs
+
+See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
+
+MLAudioPlayer Docs (31% documented)
+
 
 ## Contributing
 
 Issues and pull requests are welcome!
 
+## Todo
+
+- [ ] Player type with cover image for audio
+- [x] Play local files (Thanks [@maclacerda](https://github.com/maclacerda))
+- [x] Suporte a Notification center to stop background audio
+- [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
+- [ ] 100% documented
+
 ## Author
 
 Michel Anderson Lutz Teixeira [@michel_lutz](https://twitter.com/michel_lutz)
+
+## Contributions
+
+<a href="https://github.com/maclacerda"><img src="https://avatars.githubusercontent.com/u/4759987?v=3" title="maclacerda" width="80" height="80"></a>
+
 
 ## License
 

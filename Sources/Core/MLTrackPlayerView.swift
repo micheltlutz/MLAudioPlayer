@@ -22,37 +22,45 @@
 
 import UIKit
 
+/*
+ MLTrackingConfig - Struct model
+ */
+struct MLTrackingConfig {
+    var imageNameTrackingThumb: String
+    var trackingTintColor: UIColor
+    var trackingMinimumTrackColor: UIColor
+    var trackingMaximumTrackColor: UIColor
+}
+
 class MLTrack: UISlider {
+    ///Height for line tracking
     var trackHeight: CGFloat = 4
-    
-    init() {
+    init(config: MLTrackingConfig) {
         super.init(frame: .zero)
         isContinuous = false
-        tintColor = UIColor(hex: "246BB3")
-        //sliderTrack.thumbTintColor = UIColor(hex: "246BB3")
-        minimumTrackTintColor = UIColor(hex: "246BB3")
-        maximumTrackTintColor = UIColor(hex: "B3C4CE")
+        tintColor = config.trackingTintColor
+        minimumTrackTintColor = config.trackingMinimumTrackColor
+        maximumTrackTintColor = config.trackingMaximumTrackColor
         translatesAutoresizingMaskIntoConstraints = false
-        setThumbImage(UIImage(named: "thumbTracking"), for: .normal)
+        setThumbImage(UIImage(named: config.imageNameTrackingThumb), for: .normal)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /// override trackRect() with bounds and var trackHeight
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: trackHeight))
     }
 }
 
-
-
 class MLTrackPlayerView: UIView {
-    private let sliderTrack = MLTrack()
+    private var sliderTrack: MLTrack!
     var didChangeValue: ((_ value: Float) -> Void)?
     
-    init() {
+    init(config: MLTrackingConfig) {
         super.init(frame: .zero)
+        sliderTrack = MLTrack(config: config)
         sliderTrack.addTarget(self, action: #selector(changeValue), for: .valueChanged)
         setupViewConfiguration()
     }
@@ -68,7 +76,6 @@ class MLTrackPlayerView: UIView {
     }
     
     @objc private func changeValue() {
-        print("sliderTrack.value: \(sliderTrack.value)")
         didChangeValue?(sliderTrack.value)
     }
     
