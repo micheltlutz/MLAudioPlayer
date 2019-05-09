@@ -285,11 +285,14 @@ Issues and pull requests are welcome!
 
 ## Todo
 
-- [ ] Player type with cover image for audio
 - [x] Play local files (Thanks [@maclacerda](https://github.com/maclacerda))
 - [x] Suporte a Notification center to stop background audio
 - [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
+- [x] Swift 5
+- [ ] Player type with cover image for audio
 - [ ] 100% documented
+- [ ] Callbacks for HelthKit
+- [ ] Implementing MPRemoteCommandCenter
 
 ## Author
 
