@@ -4,6 +4,7 @@
  <img width="300" height="300"src="http://micheltlutz.me/imagens/projetos/MLAudioPlayer/MLAUDIOPLAYER.png">
  </p>
 
+[![Swift Version](https://img.shields.io/badge/Swift-5.0-brightgreen.svg?style=flat)](https://github.com/apple/swift/blob/master/CHANGELOG.md)
 [![Platforms](https://img.shields.io/cocoapods/p/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 [![License](https://img.shields.io/cocoapods/l/MLAudioPlayer.svg)](https://raw.githubusercontent.com/micheltlutz/MLAudioPlayer/master/LICENSE)
 
@@ -272,11 +273,16 @@ Available Actions for MLAudioPlayer
 </p>
 
 
+## Demo 
+
+On this project change target for MLAudioPlayerDemo Build and Run
+
+
 ## Docs
 
 See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
 
-MLAudioPlayer Docs (31% documented)
+MLAudioPlayer Docs (33% documented)
 
 
 ## Contributing
