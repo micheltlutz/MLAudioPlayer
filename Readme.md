@@ -210,6 +210,22 @@ mlAudioPlayer.didUpdateHeightConstraint = { constant in
 Can you change any configuration on MLPlayerConfig
 
 
+### Properties to change infos on lock screen
+```swift
+class MLAudioPlayer {
+	/// Define a Title Audio to show in block Screen
+	public var titleAudio = ""
+    /// Define a Title for album to show in lock Screen
+    public var titleAlbum = ""
+    /// Define a artist name to show in lock Screen
+    public var artistName = ""
+    /// Define a artwork to show in block Screen
+    public var artwork: UIImage?
+    /// Contains a current time audio
+    public var currentTime: Double = 0.0
+}
+```
+
 #### See available configurations:
 
 
@@ -295,6 +311,8 @@ Issues and pull requests are welcome!
 - [x] Play local files (Thanks [@maclacerda](https://github.com/maclacerda))
 - [x] Suporte a Notification center to stop background audio
 - [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
+- [x] Migrate to Swift 5
+- [x] Enable MPRemoteCommandCenter
 - [ ] 100% documented
 
 ## Author

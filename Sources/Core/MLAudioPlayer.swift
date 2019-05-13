@@ -89,10 +89,10 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     public var titleAlbum = ""
     /// Define a artist name to show in lock Screen
     public var artistName = ""
-    /// Contains a current time audio
-    public var currentTime: Double = 0.0
     /// Define a artwork to show in block Screen
     public var artwork: UIImage?
+    /// Contains a current time audio
+    public var currentTime: Double = 0.0
     /// Define progressLabel: MLLabel initial value 0%
     internal let progressLabel: MLLabel = {
         let progressLabel = MLLabel()
