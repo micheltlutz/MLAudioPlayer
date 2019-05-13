@@ -21,6 +21,8 @@
 ////SOFTWARE.
 
 import UIKit
+import MediaPlayer
+
 /**
  Enum MLPlayerState states for player
 
@@ -81,6 +83,16 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     internal var totalDuration: Float = 0.0
     /// Define MLPlayerButtonView
     internal var playerButton: MLPlayerButtonView!
+    /// Define a Title Audio to show in block Screen
+    public var titleAudio = ""
+    /// Define a Title for album to show in lock Screen
+    public var titleAlbum = ""
+    /// Define a artist name to show in lock Screen
+    public var artistName = ""
+    /// Define a artwork to show in block Screen
+    public var artwork: UIImage?
+    /// Contains a current time audio
+    public var currentTime: Double = 0.0
     /// Define progressLabel: MLLabel initial value 0%
     internal let progressLabel: MLLabel = {
         let progressLabel = MLLabel()
@@ -139,6 +151,7 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         setupTrackView()
         setupRetryButton()
         setupPlayer(urlAudio: urlAudio, isLocalFile: isLocalFile)
+        setupNowPlayingInfoCenter()
         setupViewConfiguration()
     }
     /**
@@ -202,25 +215,30 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
                                                name: .MLAudioPlayerNotification, object: nil)
         audioPlayerManager.delegate = self
         playerButton.didPlay = { [weak self] in
-            self?.audioPlayerManager.play()
+            guard let self = self else { return }
+            self.audioPlayerManager.play()
         }
         playerButton.didPause = { [weak self] in
-            self?.audioPlayerManager.pause()
+            guard let self = self else { return }
+            self.audioPlayerManager.pause()
         }
         trackPlayerView.didChangeValue = { [weak self] value in
-            if self?.playerButton.state == .paused {
+            guard let self = self else { return }
+            if self.playerButton.state == .paused {
                 DispatchQueue.main.async {
-                    let stringTimer = self?.makeCurrentTimerString(currentTime: Double(value), totalDuration: Double((self?.totalDuration)!))
-                    self?.labelTimer.text = stringTimer
+                    let stringTimer = self.makeCurrentTimerString(currentTime: Double(value), totalDuration: Double(self.totalDuration))
+                    self.labelTimer.text = stringTimer
                 }
             }
-            self?.audioPlayerManager.trackNavigation(to: value)
+            self.audioPlayerManager.trackNavigation(to: value)
         }
         retryButton.didTap = { [weak self] in
-            self?.audioPlayerManager.tryAgain()
-            self?.showInfosTryAgain()
-            self?.playerButton.startAnimate()
+            guard let self = self else { return }
+            self.audioPlayerManager.tryAgain()
+            self.showInfosTryAgain()
+            self.playerButton.startAnimate()
         }
+        playerButton.startAnimate()
     }
     /**
      This function configure error texts and font
@@ -316,7 +334,7 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
      - Parameter error: Error
      */
     open func didError(error: Error) {
-        playerButton.blockAnimate()
+//        playerButton.blockAnimate()
         showErrorInfos()
     }
     /**
@@ -338,12 +356,14 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
      - Parameter totalDuration: Double
      */
     open func didUpdateTimer(currentTime: Double, totalDuration: Double) {
+        self.currentTime = currentTime
         let stringTimer = makeCurrentTimerString(currentTime: currentTime, totalDuration: totalDuration)
         self.labelTimer.text = stringTimer
         self.trackPlayerView.updateValue(value: Float(currentTime))
         if ceil(currentTime) == 0.0 {
             audioPlayerManager.reset()
         }
+        updateNowPlayingInfoCenter()
     }
     /**
      This function make string with current and total timer
@@ -492,6 +512,7 @@ extension MLAudioPlayer: ViewConfiguration {
         retryButton.topAnchor.constraint(equalTo: playerButton.button.bottomAnchor, constant: 2).isActive = true
         retryButton.leadingAnchor.constraint(equalTo: playerButton.button.leadingAnchor).isActive = true
     }
+
     /**
      This function configure ViewHierarchy
      */
@@ -529,4 +550,44 @@ extension MLAudioPlayer: ViewConfiguration {
 extension Notification.Name {
     ///Extension Notification name ***MLAudioPlayerNotification***
     public static let MLAudioPlayerNotification = Notification.Name("MLAudioPlayerNotificationCenter")
+}
+
+// MARK: Remote control
+
+extension MLAudioPlayer {
+    /**
+     Configure Command Center with MLAudioPlayer commands
+     */
+    private func setupNowPlayingInfoCenter() {
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            self.playerButton.play()
+            self.audioPlayerManager.play()
+            return .success
+        }
+
+        commandCenter.pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            self.playerButton.pause()
+            self.audioPlayerManager.pause()
+            return .success
+        }
+    }
+    /**
+     Update infos on lock screen
+     */
+    private func updateNowPlayingInfoCenter() {
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyTitle: titleAudio,
+            MPMediaItemPropertyAlbumTitle: titleAlbum,
+            MPMediaItemPropertyArtist: artistName,
+            MPMediaItemPropertyPlaybackDuration: totalDuration,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: currentTime
+        ]
+        if let artwork = artwork {
+            MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: artwork.size, requestHandler: { (size) -> UIImage in
+                return artwork
+            })
+        }
+    }
 }

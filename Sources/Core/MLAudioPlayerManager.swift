@@ -67,7 +67,9 @@ class MLAudioPlayerManager: NSObject{
         } else {
             // If local file, trying load the file
             guard let url = URL(string: urlAudio) else {
-                print("Ocorreu um erro ao tentar carregar o arquivo especificado.")
+                let errorURL = NSError(domain: "", code: 0,
+                                       userInfo: ["description" : "Ocorreu um erro ao tentar carregar o arquivo especificado."])
+                delegate?.didError(error: errorURL)
                 return
             }
             
@@ -117,7 +119,6 @@ class MLAudioPlayerManager: NSObject{
      */
     open func pause() {
         audioPlayer.pause()
-        timer.invalidate()
         delegate?.didPause()
     }
     /**

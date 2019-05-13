@@ -38,6 +38,7 @@ class MLPlayerButtonView: UIView {
     internal let button: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "play"), for: .normal)
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -60,7 +61,6 @@ class MLPlayerButtonView: UIView {
     
     var config = MLPlayerButtonConfig()
     init(config: MLPlayerButtonConfig?) {
-    //init(width: CGFloat? = 128 , height: CGFloat? = 128, type: MLPlayerType? = .full, loadAnimating: Bool? = true, showLoadLabel: Bool? = true) {
         super.init(frame: .zero)
         if let config = config {
             self.config = config
@@ -69,7 +69,6 @@ class MLPlayerButtonView: UIView {
         if self.config.playerType == .full {
             self.setupViewConfiguration()
         }
-        self.startAnimate()
     }
     
     @objc func toogleState() {
@@ -101,6 +100,7 @@ class MLPlayerButtonView: UIView {
                 UIView.animate(withDuration: 1.0, animations: {
                     if self.config.showLoadLabel! {
                         self.loadingLabel.alpha = 0.0
+                        self.button.isHidden = false
                     }
                     self.loadingView.alpha = 0.0
                 }) { (success) in
@@ -114,6 +114,7 @@ class MLPlayerButtonView: UIView {
             readyToInteract()
         }
     }
+
     private func readyToInteract() {
         self.state = .loaded
         self.loadingLabel.isHidden = true
@@ -133,6 +134,7 @@ class MLPlayerButtonView: UIView {
             loadingView.layer.add(MLGlobalAnimations.infiniteRotate(duration: aCircleTime), forKey: nil)
         }
     }
+
     func blockAnimate() {
         if config.loadAnimating! {
             DispatchQueue.main.async {

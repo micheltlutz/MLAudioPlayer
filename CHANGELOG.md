@@ -1,5 +1,31 @@
 # Change Log
 -----
+## [1.2.0 - Swift 5](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.2.0) (2019-05-13)
+
+
+#### Add
+- Now support MPRemoteCommandCenter
+- Properties to change infos on lock screen
+
+
+```swift
+class MLAudioPlayer {
+	/// Define a Title Audio to show in block Screen
+	public var titleAudio = ""
+    /// Define a Title for album to show in lock Screen
+    public var titleAlbum = ""
+    /// Define a artist name to show in lock Screen
+    public var artistName = ""
+    /// Define a artwork to show in block Screen
+    public var artwork: UIImage?
+    /// Contains a current time audio
+    public var currentTime: Double = 0.0
+}
+```
+
+
+
+-----
 ## [1.1.1 - Swift 5](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.1.1) (2019-04-14)
 
 #### Add

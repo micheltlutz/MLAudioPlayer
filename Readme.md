@@ -4,6 +4,7 @@
  <img width="300" height="300"src="http://micheltlutz.me/imagens/projetos/MLAudioPlayer/MLAUDIOPLAYER.png">
  </p>
 
+[![Swift Version](https://img.shields.io/badge/Swift-5.0-brightgreen.svg?style=flat)](https://github.com/apple/swift/blob/master/CHANGELOG.md)
 [![Platforms](https://img.shields.io/cocoapods/p/MLAudioPlayer.svg)](https://cocoapods.org/pods/MLAudioPlayer)
 [![License](https://img.shields.io/cocoapods/l/MLAudioPlayer.svg)](https://raw.githubusercontent.com/micheltlutz/MLAudioPlayer/master/LICENSE)
 
@@ -209,6 +210,22 @@ mlAudioPlayer.didUpdateHeightConstraint = { constant in
 Can you change any configuration on MLPlayerConfig
 
 
+### Properties to change infos on lock screen
+```swift
+class MLAudioPlayer {
+	/// Define a Title Audio to show in block Screen
+	public var titleAudio = ""
+    /// Define a Title for album to show in lock Screen
+    public var titleAlbum = ""
+    /// Define a artist name to show in lock Screen
+    public var artistName = ""
+    /// Define a artwork to show in block Screen
+    public var artwork: UIImage?
+    /// Contains a current time audio
+    public var currentTime: Double = 0.0
+}
+```
+
 #### See available configurations:
 
 
@@ -272,11 +289,16 @@ Available Actions for MLAudioPlayer
 </p>
 
 
+## Demo 
+
+On this project change target for MLAudioPlayerDemo Build and Run
+
+
 ## Docs
 
 See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
 
-MLAudioPlayer Docs (31% documented)
+MLAudioPlayer Docs (33% documented)
 
 
 ## Contributing
@@ -288,11 +310,11 @@ Issues and pull requests are welcome!
 - [x] Play local files (Thanks [@maclacerda](https://github.com/maclacerda))
 - [x] Suporte a Notification center to stop background audio
 - [x] Migrate to Swift 4.2 (Thanks [@maclacerda](https://github.com/maclacerda))
-- [x] Swift 5
+- [x] Migrate to Swift 5
+- [x] Implementing MPRemoteCommandCenter
 - [ ] Player type with cover image for audio
 - [ ] 100% documented
 - [ ] Callbacks for HelthKit
-- [ ] Implementing MPRemoteCommandCenter
 
 ## Author
 
