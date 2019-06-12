@@ -35,6 +35,11 @@ class MLPlayerButtonConfig {
 class MLPlayerButtonView: UIView {
     var state: MLPlayerState = .idle
     var type: MLPlayerType = .full
+    var playerInfo: String = "" {
+        didSet {
+            print("\n\ndidSet -> OLDVALUE: \(oldValue) NEWVALUE: \(playerInfo)")
+        }
+    }
     internal let button: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "play"), for: .normal)
@@ -71,7 +76,10 @@ class MLPlayerButtonView: UIView {
         }
     }
     
-    @objc func toogleState() {
+    @objc private func toogleState() {
+        print("State: \(state)")
+        print("toogleState-playerInfo: \(playerInfo)")
+
         switch state {
         case .paused, .loaded:
             play()
@@ -79,8 +87,16 @@ class MLPlayerButtonView: UIView {
         case .playing:
             pause()
             didPause?()
+        case .loading:
+            if playerInfo == "readyToPlay" {
+                print("toogleState-loading-playerInfo: \(playerInfo)")
+                play()
+                didPlay?()
+            }
         default:
-            isUserInteractionEnabled = false
+            print("ML toogleState default")
+            break
+//            isUserInteractionEnabled = false
         }
     }
     
@@ -104,6 +120,7 @@ class MLPlayerButtonView: UIView {
                     }
                     self.loadingView.alpha = 0.0
                 }) { (success) in
+                    print("stopAnimate-success: \(self.playerInfo)")
                     if success {
                         self.readyToInteract()
                         self.loadingView.layer.removeAllAnimations()
@@ -111,6 +128,7 @@ class MLPlayerButtonView: UIView {
                 }
             }
         } else {
+            print("stopAnimate-else: \(playerInfo)")
             readyToInteract()
         }
     }
@@ -129,9 +147,8 @@ class MLPlayerButtonView: UIView {
         if !config.showLoadLabel! {
             loadingLabel.isHidden = true
         }
-        
         if config.loadAnimating! {
-            loadingView.layer.add(MLGlobalAnimations.infiniteRotate(duration: aCircleTime), forKey: nil)
+            MLGlobalAnimations.infiniteRotate(view: loadingView, duration: aCircleTime)
         }
     }
 

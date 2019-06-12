@@ -36,6 +36,7 @@ protocol MLAudioPlayerManagerDelegate: class {
 }
 
 class MLAudioPlayerManager: NSObject{
+    let uuid = UUID().uuidString.lowercased()
     ///Define a urlAudio: String
     private var urlAudio: String!
     ///Define a timer: Timer
@@ -77,6 +78,22 @@ class MLAudioPlayerManager: NSObject{
         }
     }
     /**
+     This function start a download audio file
+     */
+    private func beginDownloadingFile(){
+//        let configuration = URLSessionConfiguration.ephemeral
+
+        let configuration = URLSessionConfiguration.background(withIdentifier: uuid)
+
+        let operationQueue = OperationQueue()
+        let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
+        print("\n\n ------- URL Audio ------")
+        print(self.urlAudio)
+        guard let url = URL(string: self.urlAudio) else { return }
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+    }
+    /**
      This function configure AVAudioSession, create instance of AVAudioPlayer and configure this with volume and url Audio from initializer
      
      - Parameter url: URL
@@ -94,17 +111,6 @@ class MLAudioPlayerManager: NSObject{
         } catch {
             delegate?.didError(error: error)
         }
-    }
-    /**
-     This function start a download audio file
-     */
-    private func beginDownloadingFile(){
-        let configuration = URLSessionConfiguration.ephemeral
-        let operationQueue = OperationQueue()
-        let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
-        guard let url = URL(string: self.urlAudio) else { return }
-        let downloadTask = urlSession.downloadTask(with: url)
-        downloadTask.resume()
     }
     /**
      This function play audio
@@ -168,13 +174,16 @@ class MLAudioPlayerManager: NSObject{
 extension MLAudioPlayerManager: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let percentage = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
+//        DispatchQueue.main.sync {
             self.percentageDownload = Int(percentage * 100)
             self.delegate?.didUpdateProgress(percentage: self.percentageDownload)
         }
     }
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         isDownloading = false
+        print("Location: \(location)")
+        print("uuid: \(uuid)")
         preparePlayer(url: location)
     }
     func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {

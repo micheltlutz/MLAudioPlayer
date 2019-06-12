@@ -33,6 +33,7 @@
 		D0AC044E21231F28002584B2 /* MLGlobalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */; };
 		D0AC04562123635D002584B2 /* MLRetryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC04552123635D002584B2 /* MLRetryButton.swift */; };
 		D0AC045A2124A35F002584B2 /* MLPlayerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */; };
+		D0FA27D822B13A99004A1CC8 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA27D722B13A99004A1CC8 /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		D0AC044D21231F28002584B2 /* MLGlobalAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLGlobalAnimations.swift; sourceTree = "<group>"; };
 		D0AC04552123635D002584B2 /* MLRetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLRetryButton.swift; sourceTree = "<group>"; };
 		D0AC04592124A35F002584B2 /* MLPlayerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPlayerConfig.swift; sourceTree = "<group>"; };
+		D0FA27D722B13A99004A1CC8 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,11 +262,12 @@
 			isa = PBXGroup;
 			children = (
 				D05788DB22859AAA00DF26E6 /* AppDelegate.swift */,
-				D05788DD22859AAA00DF26E6 /* ViewController.swift */,
-				D05788DF22859AAA00DF26E6 /* Main.storyboard */,
 				D05788E222859AAF00DF26E6 /* Assets.xcassets */,
-				D05788E422859AAF00DF26E6 /* LaunchScreen.storyboard */,
 				D05788E722859AAF00DF26E6 /* Info.plist */,
+				D05788E422859AAF00DF26E6 /* LaunchScreen.storyboard */,
+				D05788DF22859AAA00DF26E6 /* Main.storyboard */,
+				D05788DD22859AAA00DF26E6 /* ViewController.swift */,
+				D0FA27D722B13A99004A1CC8 /* ViewController2.swift */,
 			);
 			path = MLAudioPlayerDemo;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 			files = (
 				D05788DE22859AAA00DF26E6 /* ViewController.swift in Sources */,
 				D05788DC22859AAA00DF26E6 /* AppDelegate.swift in Sources */,
+				D0FA27D822B13A99004A1CC8 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

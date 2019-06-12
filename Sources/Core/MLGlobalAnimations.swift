@@ -24,15 +24,17 @@ import UIKit
 
 struct MLGlobalAnimations {
     static func infiniteRotate(view: UIView, duration: Double) {
-        UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
-            view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        }, completion: { finished in
+        DispatchQueue.main.async {
             UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
-                view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi*2))
+                view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             }, completion: { finished in
-                MLGlobalAnimations.infiniteRotate(view: view, duration: duration)
+                UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
+                    view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi*2))
+                }, completion: { finished in
+                    MLGlobalAnimations.infiniteRotate(view: view, duration: duration)
+                })
             })
-        })
+        }
     }
     static func infiniteRotate(duration: Double) -> CABasicAnimation { //CABasicAnimation
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
