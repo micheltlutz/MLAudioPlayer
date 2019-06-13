@@ -23,18 +23,32 @@
 import UIKit
 
 struct MLGlobalAnimations {
+    /**
+     Create infinite rotate animation in UIView with duration to complete step animation
+
+     - Parameter view: ***UIView*** for animate
+     - Parameter duration: ***Double*** for duration to complete step animation
+     */
     static func infiniteRotate(view: UIView, duration: Double) {
-        UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
-            view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        }, completion: { finished in
+        DispatchQueue.main.async {
             UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
-                view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi*2))
+                view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             }, completion: { finished in
-                MLGlobalAnimations.infiniteRotate(view: view, duration: duration)
+                UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
+                    view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi*2))
+                }, completion: { finished in
+                    MLGlobalAnimations.infiniteRotate(view: view, duration: duration)
+                })
             })
-        })
+        }
     }
-    static func infiniteRotate(duration: Double) -> CABasicAnimation { //CABasicAnimation
+    /**
+     Create infinite rotate animation to use in layer with duration to complete step animation
+
+     - Parameter duration: ***Double*** for duration to complete step animation
+     - return ***CABasicAnimation***
+     */
+    static func infiniteRotate(duration: Double) -> CABasicAnimation {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
         rotationAnimation.toValue = Double.pi * 2 //Minus can be Direction

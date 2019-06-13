@@ -1,5 +1,45 @@
 # Change Log
 -----
+## [1.2.1 - Swift 5](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.2.1) (2019-06-13)
+
+
+#### Add
+- Load audio after ...
+
+In some cases it is necessary to delay loading the audio until some other screen loading for example is completed. for these cases it is possible to configure the player in this way.
+
+Usage: 
+
+```
+//set autoload to false
+let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://youraudio.mp3",
+                                          config: nil,
+                                          isLocalFile: false, autoload: false)
+
+/**
+Example: Loading after using
+Post to .MLAudioPlayerNotification userInfo = ["action": MLPlayerActions.load]
+*/
+override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: .MLAudioPlayerNotification, object: nil,
+                                        userInfo: ["action": MLPlayerActions.load])
+    }
+
+
+```
+
+On ```viewWillAppear``` Player starting load
+
+ 
+- Config start volume ```MLPlayerConfig.initialVolume```
+
+#### Fix 
+- Multiple audios loading in same context
+- Bug animation when change tab or pageControll swipe
+
+
+-----
 ## [1.2.0 - Swift 5](https://github.com/micheltlutz/MLAudioPlayer/releases/tag/v1.2.0) (2019-05-13)
 
 

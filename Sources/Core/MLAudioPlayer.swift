@@ -38,14 +38,15 @@ public enum MLPlayerState: String {
 }
 /**
  Available Actions for MLAudioPlayer
- 
+
+     - load
      - play
      - pause
      - stop
      - reset
  */
 public enum MLPlayerActions: String {
-    case play, pause, stop, reset
+    case load, play, pause, stop, reset
 }
 /**
 Enum MLPlayerType states for player
@@ -72,7 +73,9 @@ struct MLAudioPlayerHelper {
         return "\(minuteString):\(secondString)"
     }
 }
-
+/**
+ MLAudioPlayer Extends UIView and implements MLAudioPlayerProtocol
+ */
 open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     static let name = "MLAudioPlayer"
     /// Define MLAudioPlayerManager
@@ -129,52 +132,56 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      Contains NSLayoutConstraint self widthAnchor.constraint
      */
     open private(set) var widthConstraint: NSLayoutConstraint?
-    /// retryButton: MLRetryButton
+    /**
+     Contains MLRetryButton instance
+    */
     internal var retryButton: MLRetryButton!
+    /**
+     Define MLPlayerConfig if not replace this var use a default MLPlayerConfig
+     */
     private var playerConfig: MLPlayerConfig = {
         let defaultConfig = MLPlayerConfig()
         return defaultConfig
     }()
     /**
+     Contains string urlAudio
+     */
+    private var urlAudio: String!
+    /**
+     If urlAudio is localFile
+     */
+    private var isLocalFile = false
+    /**
+     Indicates when player has configured
+     */
+    private var didSetupPlayer = false
+    /**
      Initializar MLAudioPlayer
 
      - Parameter urlAudio: String url for audio [local or stream]
-     - Parameter config: MLPlayerConfig? with playerconfiguration
+     - Parameter config?: MLPlayerConfig with player configuration
+     - Parameter isLocalFile?: urlAudio is localFile?
+     - Parameter autoload: urlAudio Indicates if player will go start the setup ***MLAudioPlayerManager*** when it is initialized
      */
-    convenience public init(urlAudio: String, config: MLPlayerConfig? = nil, isLocalFile: Bool = false) {
+    convenience public init(urlAudio: String, config: MLPlayerConfig? = nil, isLocalFile: Bool = false, autoload: Bool = true) {
         self.init(frame: .zero)
-        if let config = config {
-            playerConfig = config
-        }
+        self.urlAudio = urlAudio
+        if let config = config { playerConfig = config }
+        self.isLocalFile = isLocalFile
+        initObserver()
         setupType()
         setupProgressBar()
         setupTrackView()
         setupRetryButton()
-        setupPlayer(urlAudio: urlAudio, isLocalFile: isLocalFile)
-        setupNowPlayingInfoCenter()
+        if autoload { loadAudio() }
         setupViewConfiguration()
     }
     /**
-     This function create a retryButton with playerConfig string for tryAgainText
+     Start Observer Notification center for player
      */
-    private func setupRetryButton() {
-        retryButton = MLRetryButton(text: playerConfig.tryAgainText)
-        if let font = playerConfig.tryAgainFont {
-            retryButton.button.titleLabel?.font = font
-        }
-        if let color = playerConfig.tryAgainColor {
-            retryButton.button.setTitleColor(color, for: .normal)
-        }
-    }
-    /**
-     This function configure a profressbar with colors on playerConfig
-     */
-    private func setupProgressBar() {
-        progressBar.trackTintColor = playerConfig.progressTrackTintColor
-        progressBar.tintColor = .white
-        progressBar.progressTintColor = playerConfig.progressTintColor
-        progressLabel.font = playerConfig.labelsFont
-        progressLabel.textColor = playerConfig.labelsColors
+    private func initObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationController(_:)),
+                                               name: .MLAudioPlayerNotification, object: nil)
     }
     /**
      This function configure playerButton
@@ -194,6 +201,16 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         didUpdateHeightConstraint?(heightConstant)
     }
     /**
+     This function configure a profressbar with colors on playerConfig
+     */
+    private func setupProgressBar() {
+        progressBar.trackTintColor = playerConfig.progressTrackTintColor
+        progressBar.tintColor = .white
+        progressBar.progressTintColor = playerConfig.progressTintColor
+        progressLabel.font = playerConfig.labelsFont
+        progressLabel.textColor = playerConfig.labelsColors
+    }
+    /**
      This function configure trackPlayerView with MLTrackPlayerView and playerConfig infos
      */
     private func setupTrackView() {
@@ -205,14 +222,34 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
         trackPlayerView.isHidden = true
     }
     /**
+     This function create a retryButton with playerConfig string for tryAgainText
+     */
+    private func setupRetryButton() {
+        retryButton = MLRetryButton(text: playerConfig.tryAgainText)
+        if let font = playerConfig.tryAgainFont {
+            retryButton.button.titleLabel?.font = font
+        }
+        if let color = playerConfig.tryAgainColor {
+            retryButton.button.setTitleColor(color, for: .normal)
+        }
+    }
+    /**
+     Initializar MLAudioPlayerManager and setup MPRemoteCommandCenter
+     */
+    public func loadAudio() {
+        setupPlayer(urlAudio: urlAudio, isLocalFile: isLocalFile)
+        setupNowPlayingInfoCenter()
+    }
+    /**
      This function initialize MLAudioPlayerManager and condigure handlers, starts observables, MLAudioPlayerNotification to stop
 
      - Parameter urlAudio: String url for audio
+     - Parameter isLocalFile?: urlAudio is localFile?
      */
     internal func setupPlayer(urlAudio: String, isLocalFile: Bool) {
-        audioPlayerManager = MLAudioPlayerManager(urlAudio: urlAudio)
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationController(_:)),
-                                               name: .MLAudioPlayerNotification, object: nil)
+        audioPlayerManager = MLAudioPlayerManager(urlAudio: urlAudio,
+                                                  volume: playerConfig.initialVolume,
+                                                  isLocalFile: isLocalFile)
         audioPlayerManager.delegate = self
         playerButton.didPlay = { [weak self] in
             guard let self = self else { return }
@@ -239,6 +276,8 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
             self.playerButton.startAnimate()
         }
         playerButton.startAnimate()
+        playerButton.playerInfo = "setupPlayer"
+        didSetupPlayer = true
     }
     /**
      This function configure error texts and font
@@ -289,21 +328,25 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
     /**
      This function controller action on AudioPlayer with NotificationCenter
      */
     @objc func notificationController(_ notification: NSNotification) {
         if let action = notification.userInfo?["action"] as? MLPlayerActions {
             switch action {
-            case .stop:
-                stop()
-            case .reset:
-                reset()
+            case .load:
+                if !didSetupPlayer {
+                    playerButton.playerInfo = "load"
+                    loadAudio()
+                }
             case .play:
                 playerButton.play()
             case .pause:
                 playerButton.pause()
+            case .stop:
+                stop()
+            case .reset:
+                reset()
             }
         }
     }
@@ -334,7 +377,6 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
      - Parameter error: Error
      */
     open func didError(error: Error) {
-//        playerButton.blockAnimate()
         showErrorInfos()
     }
     /**
@@ -385,10 +427,11 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
      - Parameter totalDuration: Double
      */
     open func readyToPlay(currentTime: Double, totalDuration: Double) {
-        self.playerButton.stopAnimate()
+        playerButton.playerInfo = "readyToPlay"
         self.totalDuration = Float(totalDuration)
         let stringTimer = makeCurrentTimerString(currentTime: currentTime, totalDuration: totalDuration)
         DispatchQueue.main.sync {
+            self.playerButton.stopAnimate()
             self.labelTimer.text = stringTimer
             self.progressBar.isHidden = true
             self.trackPlayerView.isHidden = false

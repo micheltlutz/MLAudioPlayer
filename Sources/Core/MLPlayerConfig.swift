@@ -46,13 +46,14 @@ public struct MLPlayerConfig {
     public var heightPlayerFull: CGFloat? = 177
     public var widthPlayerMini: CGFloat? = UIScreen.main.bounds.width
     public var heightPlayerMini: CGFloat? = 50
+    public var initialVolume: Float? = 0.7
 
     public init(labelsColors: UIColor?, labelsFont: UIFont?, labelsLoadingFont: UIFont?, playerType: MLPlayerType?,
                 loadingText: String?, loadErrorText: String?, imageNamePlayButton: String?,
                 imageNamePauseButton: String?, imageNameLoading: String?, imageNameTrackingThumb: String?,
                 trackingTintColor: UIColor?, trackingMinimumTrackColor: UIColor?,
                 trackingMaximumTrackColor: UIColor?, widthPlayerFull: CGFloat?, heightPlayerFull: CGFloat?,
-                widthPlayerMini: CGFloat?, heightPlayerMini: CGFloat?, labelsTimerFont: UIFont?) {
+                widthPlayerMini: CGFloat?, heightPlayerMini: CGFloat?, labelsTimerFont: UIFont?, initialVolume: Float?) {
         self.labelsColors = labelsColors
         self.labelsFont = labelsFont
         self.labelsLoadingFont = labelsLoadingFont
@@ -71,12 +72,12 @@ public struct MLPlayerConfig {
         self.widthPlayerMini = widthPlayerMini
         self.heightPlayerMini = heightPlayerMini
         self.labelsTimerFont = labelsTimerFont
+        self.initialVolume = initialVolume
     }
 }
 
 extension MLPlayerConfig {
-    public init() {
-    }
+    public init() {}
     public init(playerType: MLPlayerType) {
         self.playerType = playerType
     }
