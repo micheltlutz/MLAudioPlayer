@@ -23,7 +23,7 @@ AudioPlayer for Swift projects
 ## Requirements
 
 - iOS 10.0+
-- Xcode 9.0+
+- Xcode 10.0+
 
 ## Installation
 
@@ -44,7 +44,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'MLAudioPlayer', '~> 1.1.0'
+pod 'MLAudioPlayer', '~> 1.2.1'
 ```
 
 Then, run the following command:
@@ -70,7 +70,7 @@ $ brew install carthage
 To integrate MLAudioPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "micheltlutz/MLAudioPlayer" ~> 1.1.0
+github "micheltlutz/MLAudioPlayer" ~> 1.2.1
 ```
 
 </details>
@@ -88,7 +88,7 @@ import PackageDescription
 let package = Package(
     name: "HelloMLAudioPlayer",
     dependencies: [
-        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.1.0"))
+        .package(url: "https://github.com/micheltlutz/MLAudioPlayer.git", .upToNextMajor(from: "1.2.1"))
     ],
     targets: [
         .target(name: "HelloMLAudioPlayer", dependencies: ["MLAudioPlayer"])
@@ -203,6 +203,31 @@ mlAudioPlayer.didUpdateHeightConstraint = { constant in
 
 ```
 
+#### Start loading after...
+
+In some cases it is necessary to delay loading the audio until some other screen loading for example is completed. for these cases it is possible to configure the player in this way.
+
+```
+//set autoload to false
+let mlAudioPlayer = MLAudioPlayer(urlAudio: "http://youraudio.mp3",
+                                          config: nil,
+                                          isLocalFile: false, autoload: false)
+
+/**
+Example: Loading after using
+Post to .MLAudioPlayerNotification userInfo = ["action": MLPlayerActions.load]
+*/
+override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: .MLAudioPlayerNotification, object: nil,
+                                        userInfo: ["action": MLPlayerActions.load])
+    }
+
+
+```
+
+On ```viewWillAppear``` Player starting load
+
 
 ### MLPlayerConfig
 
@@ -252,10 +277,11 @@ MLPlayerConfig {
 	trackingMaximumTrackColor: UIColor? = UIColor(hex: "B3C4CE")
 	progressTintColor: UIColor? = UIColor(hex: "B3C4CE")
 	progressTrackTintColor: UIColor? = UIColor(hex: "B3C4CE").withAlphaComponent(0.5)
-	widthPlayerFull = widthPlayerFull
-	heightPlayerFull = heightPlayerFull
-	widthPlayerMini = widthPlayerMini
-	heightPlayerMini = heightPlayerMini
+	widthPlayerFull: CGFloat? = UIScreen.main.bounds.width
+	heightPlayerFull: CGFloat? = 177
+	widthPlayerMini: CGFloat? = UIScreen.main.bounds.width
+	heightPlayerMini: CGFloat? = 50
+	initialVolume: Float? = 0.7
 }
 ```
 
@@ -298,7 +324,7 @@ On this project change target for MLAudioPlayerDemo Build and Run
 
 See [Documentation](http://htmlpreview.github.io/?https://github.com/micheltlutz/MLAudioPlayer/blob/develop/docs/index.html)
 
-MLAudioPlayer Docs (33% documented)
+MLAudioPlayer Docs (46% documented)
 
 
 ## Contributing

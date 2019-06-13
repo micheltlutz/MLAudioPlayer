@@ -73,7 +73,9 @@ struct MLAudioPlayerHelper {
         return "\(minuteString):\(secondString)"
     }
 }
-
+/**
+ MLAudioPlayer Extends UIView and implements MLAudioPlayerProtocol
+ */
 open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
     static let name = "MLAudioPlayer"
     /// Define MLAudioPlayerManager
@@ -130,8 +132,13 @@ open class MLAudioPlayer: UIView, MLAudioPlayerProtocol {
      Contains NSLayoutConstraint self widthAnchor.constraint
      */
     open private(set) var widthConstraint: NSLayoutConstraint?
-    /// retryButton: MLRetryButton
+    /**
+     Contains MLRetryButton instance
+    */
     internal var retryButton: MLRetryButton!
+    /**
+     Define MLPlayerConfig if not replace this var use a default MLPlayerConfig
+     */
     private var playerConfig: MLPlayerConfig = {
         let defaultConfig = MLPlayerConfig()
         return defaultConfig
@@ -370,7 +377,6 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
      - Parameter error: Error
      */
     open func didError(error: Error) {
-//        playerButton.blockAnimate()
         showErrorInfos()
     }
     /**
@@ -421,7 +427,6 @@ extension MLAudioPlayer: MLAudioPlayerManagerDelegate {
      - Parameter totalDuration: Double
      */
     open func readyToPlay(currentTime: Double, totalDuration: Double) {
-        print("MLAudio.readyToPlay")
         playerButton.playerInfo = "readyToPlay"
         self.totalDuration = Float(totalDuration)
         let stringTimer = makeCurrentTimerString(currentTime: currentTime, totalDuration: totalDuration)

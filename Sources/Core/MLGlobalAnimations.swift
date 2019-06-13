@@ -23,6 +23,12 @@
 import UIKit
 
 struct MLGlobalAnimations {
+    /**
+     Create infinite rotate animation in UIView with duration to complete step animation
+
+     - Parameter view: ***UIView*** for animate
+     - Parameter duration: ***Double*** for duration to complete step animation
+     */
     static func infiniteRotate(view: UIView, duration: Double) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: duration/2, delay: 0.0, options: .curveLinear, animations: {
@@ -36,7 +42,13 @@ struct MLGlobalAnimations {
             })
         }
     }
-    static func infiniteRotate(duration: Double) -> CABasicAnimation { //CABasicAnimation
+    /**
+     Create infinite rotate animation to use in layer with duration to complete step animation
+
+     - Parameter duration: ***Double*** for duration to complete step animation
+     - return ***CABasicAnimation***
+     */
+    static func infiniteRotate(duration: Double) -> CABasicAnimation {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
         rotationAnimation.toValue = Double.pi * 2 //Minus can be Direction

@@ -11,8 +11,6 @@ import MLAudioPlayer
 
 class ViewController2: UIViewController {
     var mlAudioPlayer: MLAudioPlayer = {
-
-//        http://www.bensound.org/bensound-music/bensound-dubstep.mp3
         let mlAudioPlayer = MLAudioPlayer(urlAudio: "https://protettordelinks.com/wp-content/baixar/RockyBalboa_www.toquesengracadosmp3.com.mp3",
                                           config: nil,
                                           isLocalFile: false, autoload: false)

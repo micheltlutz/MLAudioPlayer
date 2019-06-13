@@ -21,6 +21,10 @@
 ////SOFTWARE.
 
 import UIKit
+
+/**
+ Default MLPlayerButtonConfig
+ */
 class MLPlayerButtonConfig {
     var playButtonImageName: String? = "play"
     var pauseButtonImageName: String? = "pause"
@@ -30,16 +34,21 @@ class MLPlayerButtonConfig {
     var playerType: MLPlayerType? = .full
     var loadAnimating: Bool? = true
     var showLoadLabel: Bool? = true
+    var aCircleTime = 2.0
 }
-
+/**
+ MLPlayerButtonView extends UIView
+ */
 class MLPlayerButtonView: UIView {
+    /// state: MLPlayerState default value .idle
     var state: MLPlayerState = .idle
+    /// type: MLPlayerType default value .full
     var type: MLPlayerType = .full
-    var playerInfo: String = "" {
-        didSet {
-            print("\n\ndidSet -> OLDVALUE: \(oldValue) NEWVALUE: \(playerInfo)")
-        }
-    }
+    ///check playerInfo: String
+    var playerInfo: String = ""
+    /**
+     Class constant button: UIButton
+     */
     internal let button: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "play"), for: .normal)
@@ -47,24 +56,33 @@ class MLPlayerButtonView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+    /**
+     Class constant loadingView: UIImageView
+     */
     internal let loadingView: UIImageView = {
         let loadingView = UIImageView(image: UIImage(named: "playerLoad"))
         loadingView.isHidden = true
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         return loadingView
     }()
-    
+    /**
+     Class constant loadingLabel: MLLabel
+     */
     internal let loadingLabel: MLLabel = {
         let loadingLabel = MLLabel()
         loadingLabel.text = ""
         return loadingLabel
     }()
-    
+    ///Clousure to didPlay no paramter
     var didPlay: (() -> Void)!
+    ///Clousure to didPause no paramter
     var didPause: (() -> Void)!
-    
+    /// ***MLPlayerButtonConfig***
     var config = MLPlayerButtonConfig()
+    /**
+     Initializer
+     - Parameter MLPlayerButtonConfig?:
+     */
     init(config: MLPlayerButtonConfig?) {
         super.init(frame: .zero)
         if let config = config {
@@ -75,11 +93,10 @@ class MLPlayerButtonView: UIView {
             self.setupViewConfiguration()
         }
     }
-    
+    /**
+     toogleState selector
+     */
     @objc private func toogleState() {
-        print("State: \(state)")
-        print("toogleState-playerInfo: \(playerInfo)")
-
         switch state {
         case .paused, .loaded:
             play()
@@ -89,27 +106,30 @@ class MLPlayerButtonView: UIView {
             didPause?()
         case .loading:
             if playerInfo == "readyToPlay" {
-                print("toogleState-loading-playerInfo: \(playerInfo)")
                 play()
                 didPlay?()
             }
         default:
-            print("ML toogleState default")
             break
-//            isUserInteractionEnabled = false
         }
     }
-    
+    /**
+     Play selector
+     */
     @objc func play() {
         state = .playing
         button.setImage(UIImage(named: config.pauseButtonImageName!), for: .normal)
     }
-    
+    /**
+     Pause selector
+     */
     @objc func pause() {
         state = .paused
         button.setImage(UIImage(named: config.playButtonImageName!), for: .normal)
     }
-    
+    /**
+     Stop Animation and call interaction definer
+     */
     func stopAnimate() {
         if self.config.loadAnimating! {
             DispatchQueue.main.async {
@@ -120,7 +140,6 @@ class MLPlayerButtonView: UIView {
                     }
                     self.loadingView.alpha = 0.0
                 }) { (success) in
-                    print("stopAnimate-success: \(self.playerInfo)")
                     if success {
                         self.readyToInteract()
                         self.loadingView.layer.removeAllAnimations()
@@ -128,30 +147,34 @@ class MLPlayerButtonView: UIView {
                 }
             }
         } else {
-            print("stopAnimate-else: \(playerInfo)")
             readyToInteract()
         }
     }
-
+    /**
+     Change state to .loaded and define bottom to ready to interact
+     */
     private func readyToInteract() {
         self.state = .loaded
         self.loadingLabel.isHidden = true
         self.loadingView.isHidden = true
         self.isUserInteractionEnabled = true
     }
-    
+    /**
+     Start Animation and change state of buttom
+     */
     func startAnimate() {
         state = .loading
-        let aCircleTime = 2.0
         loadingView.isHidden = false
         if !config.showLoadLabel! {
             loadingLabel.isHidden = true
         }
         if config.loadAnimating! {
-            MLGlobalAnimations.infiniteRotate(view: loadingView, duration: aCircleTime)
+            MLGlobalAnimations.infiniteRotate(view: loadingView, duration: config.aCircleTime)
         }
     }
-
+    /**
+     Remove All Animations of PlayerButton
+     */
     func blockAnimate() {
         if config.loadAnimating! {
             DispatchQueue.main.async {
@@ -159,7 +182,9 @@ class MLPlayerButtonView: UIView {
             }
         }
     }
-    
+    /**
+     :nodoc:
+     */
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
